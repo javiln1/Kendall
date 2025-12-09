@@ -89,6 +89,17 @@
         .hero {
             animation: fadeIn 0.8s ease-out;
         }
+
+        .calendar-section {
+            background-color: #FFFFFF;
+            padding: 3rem 1rem;
+            min-height: 700px;
+        }
+
+        .calendar-section .calendly-inline-widget {
+            max-width: 900px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -104,9 +115,10 @@
         </section>
     </div>
 
-    <!-- Calendly inline widget -->
-    <div class="calendly-inline-widget" data-url="https://calendly.com/d/ctf8-v8g-5td/7-figure-shop-strategy-session?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0171e3&background_color=000000" style="min-width:320px;height:700px;" data-resize="true"></div>
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    <!-- Calendly inline widget end -->
+    <!-- Calendar Section -->
+    <section class="calendar-section">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/d/ctf8-v8g-5td/7-figure-shop-strategy-session?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0171e3" style="min-width:320px;height:650px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </section>
 </body>
 </html>
