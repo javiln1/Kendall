@@ -32,11 +32,11 @@
         /* Header/Logo */
         .header {
             text-align: center;
-            padding: 2rem 0;
+            padding: 1rem 0;
         }
 
         .logo {
-            max-width: 180px;
+            max-width: 220px;
             height: auto;
         }
 
@@ -150,11 +150,11 @@
             color: #0171E3;
         }
 
-        /* Breakout Videos Grid - Single Column */
+        /* Breakout Videos Grid - 2x2 Square Layout */
         .breakouts-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -162,16 +162,16 @@
         .breakout-item {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .breakout-title {
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 500;
             color: #F5F5DC;
             background-color: #111111;
-            padding: 14px 20px;
+            padding: 12px 16px;
             border-radius: 8px;
             border-left: 3px solid #0171E3;
         }
@@ -191,8 +191,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -206,10 +206,81 @@
             content: '';
             width: 0;
             height: 0;
-            border-left: 16px solid white;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
+            border-left: 14px solid white;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
             margin-left: 3px;
+        }
+
+        /* Final Video Section */
+        .final-video-section {
+            margin: 3rem 0;
+        }
+
+        .final-video-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 600;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .final-video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #111111;
+        }
+
+        .final-video-wrapper .video-placeholder {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+
+        .final-video-wrapper .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .final-video-wrapper .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 18px solid white;
+            border-top: 11px solid transparent;
+            border-bottom: 11px solid transparent;
+            margin-left: 4px;
+        }
+
+        .final-video-wrapper .label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         /* Divider */
@@ -247,15 +318,125 @@
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
+                padding-bottom: env(safe-area-inset-bottom, 1rem);
             }
 
             .logo {
-                max-width: 140px;
+                max-width: 150px;
+            }
+
+            .hero {
+                padding: 1rem 0 2rem;
+            }
+
+            .video-section {
+                margin: 1rem 0 2rem;
+            }
+
+            .video-wrapper {
+                border-radius: 8px;
+            }
+
+            .video-placeholder .play-button {
+                width: 70px;
+                height: 70px;
+            }
+
+            .video-placeholder .play-button::after {
+                border-left: 18px solid white;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+            }
+
+            .breakout-section {
+                padding: 2rem 0;
+            }
+
+            .breakouts-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
             }
 
             .breakout-title {
+                font-size: 1rem;
+            }
+
+            .divider {
+                margin: 2rem auto;
+            }
+
+            .final-video-section {
+                margin: 2rem 0;
+            }
+
+            .final-video-wrapper {
+                border-radius: 8px;
+            }
+
+            .info-box {
+                margin: 2rem auto;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Extra small phones */
+        @media (max-width: 480px) {
+            .logo {
+                max-width: 130px;
+            }
+
+            .headline {
+                font-size: 1.5rem;
+            }
+
+            .subheadline {
+                font-size: 0.95rem;
+            }
+
+            .video-placeholder .play-button {
+                width: 60px;
+                height: 60px;
+            }
+
+            .video-placeholder .play-button::after {
+                border-left: 16px solid white;
+                border-top: 9px solid transparent;
+                border-bottom: 9px solid transparent;
+            }
+
+            .breakout-title {
+                font-size: 0.95rem;
+                padding: 10px 14px;
+            }
+
+            .breakout-video .play-button {
+                width: 44px;
+                height: 44px;
+            }
+
+            .breakout-video .play-button::after {
+                border-left: 12px solid white;
+                border-top: 7px solid transparent;
+                border-bottom: 7px solid transparent;
+            }
+
+            .final-video-wrapper .play-button {
+                width: 60px;
+                height: 60px;
+            }
+
+            .final-video-wrapper .play-button::after {
+                border-left: 16px solid white;
+                border-top: 9px solid transparent;
+                border-bottom: 9px solid transparent;
+            }
+
+            .info-box h3 {
                 font-size: 1.1rem;
-                padding: 12px 16px;
+            }
+
+            .info-box p {
+                font-size: 0.95rem;
             }
         }
 
@@ -334,6 +515,28 @@
                         <div class="play-button"></div>
                     </div>
                 </div>
+
+                <!-- Breakout 4 -->
+                <div class="breakout-item">
+                    <h3 class="breakout-title">[Question 4 - e.g., What Makes This Different?]</h3>
+                    <div class="breakout-video">
+                        <div class="play-button"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Final Video Section -->
+        <section class="final-video-section">
+            <h2 class="final-video-title">[Final Video Title - e.g., One Last Thing Before Your Call...]</h2>
+            <div class="final-video-wrapper">
+                <div class="video-placeholder">
+                    <div class="play-button"></div>
+                    <span class="label">Final Video</span>
+                </div>
+                <!-- Replace placeholder above with: <wistia-player media-id="YOUR_VIDEO_ID" aspect="1.7777"></wistia-player> -->
             </div>
         </section>
 

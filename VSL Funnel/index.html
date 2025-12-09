@@ -32,11 +32,11 @@
         /* Header/Logo */
         .header {
             text-align: center;
-            padding: 2rem 0;
+            padding: 1rem 0;
         }
 
         .logo {
-            max-width: 180px;
+            max-width: 220px;
             height: auto;
         }
 
@@ -178,6 +178,7 @@
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
+                padding-bottom: env(safe-area-inset-bottom, 1rem);
             }
 
             .header {
@@ -197,11 +198,29 @@
             }
 
             .cta-section {
-                padding: 1.5rem 0;
+                padding: 1.5rem 0 2rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                display: block;
+                padding: 1rem 2rem;
+                min-height: 52px;
             }
 
             .logo {
-                max-width: 120px;
+                max-width: 150px;
+            }
+
+            .video-placeholder .play-button {
+                width: 70px;
+                height: 70px;
+            }
+
+            .video-placeholder .play-button::after {
+                border-left: 18px solid white;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
             }
         }
 
@@ -216,12 +235,23 @@
             }
 
             .cta-button {
-                padding: 0.9rem 2rem;
+                padding: 1rem 1.5rem;
                 font-size: 1rem;
             }
 
             .logo {
-                max-width: 100px;
+                max-width: 130px;
+            }
+
+            .video-placeholder .play-button {
+                width: 60px;
+                height: 60px;
+            }
+
+            .video-placeholder .play-button::after {
+                border-left: 16px solid white;
+                border-top: 9px solid transparent;
+                border-bottom: 9px solid transparent;
             }
         }
 
