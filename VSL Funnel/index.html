@@ -305,5 +305,36 @@
         </section>
     </div>
 
+    <script>
+        // UTM Parameter Tracking
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            const utmData = {};
+
+            utmParams.forEach(param => {
+                if (params.get(param)) {
+                    utmData[param] = params.get(param);
+                }
+            });
+
+            // Store in sessionStorage
+            if (Object.keys(utmData).length > 0) {
+                sessionStorage.setItem('utmData', JSON.stringify(utmData));
+            }
+
+            // Append UTMs to all internal links
+            const storedUtm = sessionStorage.getItem('utmData');
+            if (storedUtm) {
+                const utm = JSON.parse(storedUtm);
+                const utmString = Object.entries(utm).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+
+                document.querySelectorAll('a[href$=".html"]').forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.setAttribute('href', href + (href.includes('?') ? '&' : '?') + utmString);
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

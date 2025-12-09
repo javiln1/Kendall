@@ -150,40 +150,45 @@
             color: #0171E3;
         }
 
-        /* Breakout Videos Grid - 2x2 Square Layout */
+        /* FAQ Videos Grid - Compact 2x2 Square Layout */
         .breakouts-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 800px;
+            gap: 16px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .breakout-item {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .breakout-title {
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: #F5F5DC;
             background-color: #111111;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border-left: 3px solid #0171E3;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border-left: 2px solid #0171E3;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .breakout-video {
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 75%; /* More square 4:3 ratio */
             background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .breakout-video .play-button {
@@ -191,8 +196,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -206,10 +211,10 @@
             content: '';
             width: 0;
             height: 0;
-            border-left: 14px solid white;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            margin-left: 3px;
+            border-left: 12px solid white;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            margin-left: 2px;
         }
 
         /* Final Video Section */
@@ -291,30 +296,6 @@
             margin: 3rem auto;
         }
 
-        /* Info Box */
-        .info-box {
-            background-color: rgba(1, 113, 227, 0.08);
-            border: 1px solid rgba(1, 113, 227, 0.2);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            max-width: 600px;
-            margin: 3rem auto;
-        }
-
-        .info-box h3 {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #FFFFFF;
-            margin-bottom: 1rem;
-        }
-
-        .info-box p {
-            color: #F5F5DC;
-            opacity: 0.8;
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -372,11 +353,6 @@
             .final-video-wrapper {
                 border-radius: 8px;
             }
-
-            .info-box {
-                margin: 2rem auto;
-                padding: 1.5rem;
-            }
         }
 
         /* Extra small phones */
@@ -429,14 +405,6 @@
                 border-left: 16px solid white;
                 border-top: 9px solid transparent;
                 border-bottom: 9px solid transparent;
-            }
-
-            .info-box h3 {
-                font-size: 1.1rem;
-            }
-
-            .info-box p {
-                font-size: 0.95rem;
             }
         }
 
@@ -492,33 +460,33 @@
             <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
 
             <div class="breakouts-grid">
-                <!-- Breakout 1 -->
+                <!-- FAQ 1 -->
                 <div class="breakout-item">
-                    <h3 class="breakout-title">[Question 1 - e.g., How Much Do I Need To Start?]</h3>
+                    <h3 class="breakout-title">How Is This Different From Other Programs?</h3>
                     <div class="breakout-video">
                         <div class="play-button"></div>
                     </div>
                 </div>
 
-                <!-- Breakout 2 -->
+                <!-- FAQ 2 -->
                 <div class="breakout-item">
-                    <h3 class="breakout-title">[Question 2 - e.g., How Quickly Will I See Results?]</h3>
+                    <h3 class="breakout-title">What Happens If I Don't Succeed?</h3>
                     <div class="breakout-video">
                         <div class="play-button"></div>
                     </div>
                 </div>
 
-                <!-- Breakout 3 -->
+                <!-- FAQ 3 -->
                 <div class="breakout-item">
-                    <h3 class="breakout-title">[Question 3 - e.g., Do I Need Experience?]</h3>
+                    <h3 class="breakout-title">What Is The Pricing?</h3>
                     <div class="breakout-video">
                         <div class="play-button"></div>
                     </div>
                 </div>
 
-                <!-- Breakout 4 -->
+                <!-- FAQ 4 -->
                 <div class="breakout-item">
-                    <h3 class="breakout-title">[Question 4 - e.g., What Makes This Different?]</h3>
+                    <h3 class="breakout-title">How Long Until I Start Making Money?</h3>
                     <div class="breakout-video">
                         <div class="play-button"></div>
                     </div>
@@ -528,23 +496,49 @@
 
         <div class="divider"></div>
 
-        <!-- Final Video Section -->
+        <!-- Script Creation Guide Video Section -->
         <section class="final-video-section">
-            <h2 class="final-video-title">[Final Video Title - e.g., One Last Thing Before Your Call...]</h2>
+            <h2 class="final-video-title">Script Creation Guide: <span style="color: #0171E3;">"How Does The Program Actually Work?"</span></h2>
             <div class="final-video-wrapper">
                 <div class="video-placeholder">
                     <div class="play-button"></div>
-                    <span class="label">Final Video</span>
+                    <span class="label">Script Guide</span>
                 </div>
                 <!-- Replace placeholder above with: <wistia-player media-id="YOUR_VIDEO_ID" aspect="1.7777"></wistia-player> -->
             </div>
         </section>
 
-        <!-- Info Box -->
-        <section class="info-box">
-            <h3>What Happens Next?</h3>
-            <p>[Explain the next steps after they submit their application - e.g., "We'll review your application and reach out within 24-48 hours to schedule your strategy call."]</p>
-        </section>
     </div>
+    <script>
+        // UTM Parameter Tracking
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            const utmData = {};
+
+            utmParams.forEach(param => {
+                if (params.get(param)) {
+                    utmData[param] = params.get(param);
+                }
+            });
+
+            // Store in sessionStorage
+            if (Object.keys(utmData).length > 0) {
+                sessionStorage.setItem('utmData', JSON.stringify(utmData));
+            }
+
+            // Append UTMs to all internal links
+            const storedUtm = sessionStorage.getItem('utmData');
+            if (storedUtm) {
+                const utm = JSON.parse(storedUtm);
+                const utmString = Object.entries(utm).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+
+                document.querySelectorAll('a[href$=".html"]').forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.setAttribute('href', href + (href.includes('?') ? '&' : '?') + utmString);
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

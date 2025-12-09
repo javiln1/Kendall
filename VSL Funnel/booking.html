@@ -140,5 +140,45 @@
         <div class="calendly-inline-widget" data-url="https://calendly.com/d/ctf8-v8g-5td/7-figure-shop-strategy-session?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0171e3&background_color=ffffff" style="min-width:320px;height:600px;"></div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </section>
+    <script>
+        // UTM Parameter Tracking
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            const utmData = {};
+
+            utmParams.forEach(param => {
+                if (params.get(param)) {
+                    utmData[param] = params.get(param);
+                }
+            });
+
+            // Store in sessionStorage
+            if (Object.keys(utmData).length > 0) {
+                sessionStorage.setItem('utmData', JSON.stringify(utmData));
+            }
+
+            // Append UTMs to Calendly widget
+            const storedUtm = sessionStorage.getItem('utmData');
+            if (storedUtm) {
+                const utm = JSON.parse(storedUtm);
+                const calendlyWidget = document.querySelector('.calendly-inline-widget');
+                if (calendlyWidget) {
+                    let url = calendlyWidget.getAttribute('data-url');
+                    Object.entries(utm).forEach(([key, value]) => {
+                        url += `&${key}=${encodeURIComponent(value)}`;
+                    });
+                    calendlyWidget.setAttribute('data-url', url);
+                }
+
+                // Append UTMs to all internal links
+                const utmString = Object.entries(utm).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+                document.querySelectorAll('a[href$=".html"]').forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.setAttribute('href', href + (href.includes('?') ? '&' : '?') + utmString);
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

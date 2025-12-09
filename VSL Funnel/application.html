@@ -65,15 +65,6 @@
         }
 
 
-        /* Form Wrapper */
-        .form-wrapper {
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
         /* Testimonials Section */
         .testimonials-section {
             padding: 4rem 0;
@@ -224,12 +215,6 @@
                 padding: 0.5rem 0 1rem;
             }
 
-            .form-wrapper {
-                border: none;
-                border-radius: 8px;
-                margin: 0 -0.5rem 2rem;
-            }
-
             .divider {
                 margin: 2rem auto;
             }
@@ -283,11 +268,6 @@
             .logo {
                 max-width: 130px;
             }
-
-            .form-wrapper {
-                margin: 0 -1rem 2rem;
-                border-radius: 0;
-            }
         }
 
         /* Animations */
@@ -323,10 +303,7 @@
             <h1 class="headline">Fill Out The Form Below To Be Considered</h1>
         </section>
 
-        <!-- Form Section -->
-        <div class="form-wrapper">
-            <div data-tf-live="01KC26YY0E13BVZ8M8D61G6WNA"></div><script src="//embed.typeform.com/next/embed.js"></script>
-        </div>
+        <div data-tf-live="01KC26YY0E13BVZ8M8D61G6WNA"></div><script src="//embed.typeform.com/next/embed.js"></script>
 
         <div class="divider"></div>
 
@@ -351,5 +328,44 @@
         </section>
     </div>
 
+    <script>
+        // UTM Parameter Tracking
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            const utmData = {};
+
+            utmParams.forEach(param => {
+                if (params.get(param)) {
+                    utmData[param] = params.get(param);
+                }
+            });
+
+            // Store in sessionStorage
+            if (Object.keys(utmData).length > 0) {
+                sessionStorage.setItem('utmData', JSON.stringify(utmData));
+            }
+
+            // Append UTMs to all internal links
+            const storedUtm = sessionStorage.getItem('utmData');
+            if (storedUtm) {
+                const utm = JSON.parse(storedUtm);
+                const utmString = Object.entries(utm).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+
+                document.querySelectorAll('a[href$=".html"]').forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.setAttribute('href', href + (href.includes('?') ? '&' : '?') + utmString);
+                });
+
+                // Pass UTMs to Typeform as hidden fields
+                const tfEmbed = document.querySelector('[data-tf-live]');
+                if (tfEmbed) {
+                    Object.entries(utm).forEach(([key, value]) => {
+                        tfEmbed.setAttribute(`data-tf-hidden`, `${tfEmbed.getAttribute('data-tf-hidden') || ''}${key}=${value},`.replace(/^,/, ''));
+                    });
+                }
+            }
+        })();
+    </script>
 </body>
 </html>
