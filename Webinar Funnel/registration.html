@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for the Free Webinar - [Brand Name]</title>
+    <meta name="description" content="[Meta description here]">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #F5F5DC;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
+            max-width: 180px;
+            height: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .eyebrow {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #45AE04;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .headline {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .subheadline {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #F5F5DC;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: rgba(69, 174, 4, 0.1);
+            border: 1px solid rgba(69, 174, 4, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .benefits-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .benefits-list {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1rem;
+            color: #F5F5DC;
+        }
+
+        .benefits-list li::before {
+            content: "✓";
+            color: #45AE04;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: #111111;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .form-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #F5F5DC;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(69, 174, 4, 0.3);
+            border-radius: 8px;
+            background-color: #1a1a1a;
+            color: #FFFFFF;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #45AE04;
+        }
+
+        .form-group input::placeholder {
+            color: #666;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background-color: #45AE04;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #3a9203;
+            transform: translateY(-2px);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #F5F5DC;
+            opacity: 0.6;
+            margin-top: 1rem;
+        }
+
+        /* Host Section */
+        .host-section {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .host-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+        }
+
+        .host-title span {
+            color: #45AE04;
+        }
+
+        .host-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            background-color: #111111;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .host-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #45AE04;
+        }
+
+        .host-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+
+        .host-bio {
+            font-size: 0.95rem;
+            color: #F5F5DC;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title span {
+            color: #45AE04;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background: #111111;
+            border-radius: 10px;
+            padding: 8px;
+            border: 1px solid rgba(69, 174, 4, 0.1);
+        }
+
+        .testimonial-img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        /* Divider */
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #45AE04, transparent);
+            margin: 2rem auto;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 1rem 0;
+            }
+
+            .hero {
+                padding: 1rem 0;
+            }
+
+            .benefits {
+                padding: 1.5rem;
+            }
+
+            .form-section {
+                padding: 1.5rem;
+            }
+
+            .host-card {
+                padding: 1.5rem;
+            }
+
+            .logo {
+                max-width: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .headline {
+                font-size: 1.5rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                max-width: 100px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .benefits {
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .form-section {
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <img src="images/logo.png" alt="[Brand Name]" class="logo">
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <p class="eyebrow">Free Live Training</p>
+            <h1 class="headline">[Main Headline - e.g., "Ready to [Achieve X] Without [Pain Point]?"]</h1>
+            <p class="subheadline">[Subheadline - e.g., "Join this exclusive webinar and discover the exact system I used to [result]"]</p>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits">
+            <h2 class="benefits-title">In This Free Training, You'll Discover:</h2>
+            <ul class="benefits-list">
+                <li>[Benefit 1 - e.g., "The #1 mistake most people make when trying to [goal]"]</li>
+                <li>[Benefit 2 - e.g., "How to [achieve result] in [timeframe] without [common obstacle]"]</li>
+                <li>[Benefit 3 - e.g., "The exact framework I use to [result] every single time"]</li>
+                <li>[Benefit 4 - e.g., "Why [common belief] is actually holding you back"]</li>
+            </ul>
+        </section>
+
+        <!-- Registration Form -->
+        <section class="form-section">
+            <h2 class="form-title">Reserve Your Spot Now</h2>
+
+            <!-- OPTION 1: Simple HTML Form (replace action with your form handler) -->
+            <form action="confirmation.html" method="GET">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number (for reminders)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+                <button type="submit" class="submit-btn">Register for Free</button>
+            </form>
+
+            <!-- OPTION 2: Typeform Embed (uncomment and replace ID)
+            <div data-tf-live="[TYPEFORM_ID]"></div>
+            <script src="https://embed.typeform.com/next/embed.js"></script>
+            -->
+
+            <p class="form-note">We respect your privacy. Unsubscribe at any time.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Host Section -->
+        <section class="host-section">
+            <h2 class="host-title">Your <span>Host</span></h2>
+            <div class="host-card">
+                <img src="images/host.png" alt="[Host Name]" class="host-image">
+                <h3 class="host-name">[Host Name]</h3>
+                <p class="host-bio">[Short bio - e.g., "John has helped over 500 students achieve [result]. He's been featured in [publications] and has [X years] of experience in [industry]."]</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <h2 class="section-title">What Our <span>Students</span> Are Saying</h2>
+            <div class="testimonials-grid">
+                <!-- ADD TESTIMONIAL IMAGES HERE -->
+                <!-- Example:
+                <div class="testimonial-card">
+                    <img src="images/testimonials/testimonial_01.png" alt="Student Result" class="testimonial-img" loading="lazy">
+                </div>
+                -->
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - [Brand Name]</title>
+    <meta name="description" content="Thank you for applying. Watch the next steps video.">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000000;
+            color: #F5F5DC;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header/Logo */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
+            max-width: 180px;
+            height: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 2rem 0 3rem;
+        }
+
+        .headline {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .headline .highlight {
+            color: #0171E3;
+        }
+
+        .subheadline {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #F5F5DC;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Video Section */
+        .video-section {
+            margin: 2rem 0 4rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #111111;
+        }
+
+        .video-placeholder {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+
+        .video-placeholder .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .video-placeholder .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 4px;
+        }
+
+        .video-placeholder .label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Breakout Videos Section */
+        .breakout-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span {
+            color: #0171E3;
+        }
+
+        /* Breakout Videos Grid - Single Column */
+        .breakouts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .breakout-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .breakout-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #F5F5DC;
+            background-color: #111111;
+            padding: 14px 20px;
+            border-radius: 8px;
+            border-left: 3px solid #0171E3;
+        }
+
+        .breakout-video {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 */
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .breakout-video .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .breakout-video .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 16px solid white;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            margin-left: 3px;
+        }
+
+        /* Divider */
+        .divider {
+            width: 80px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 3rem auto;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: rgba(1, 113, 227, 0.08);
+            border: 1px solid rgba(1, 113, 227, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+
+        .info-box h3 {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+        }
+
+        .info-box p {
+            color: #F5F5DC;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .logo {
+                max-width: 140px;
+            }
+
+            .breakout-title {
+                font-size: 1.1rem;
+                padding: 12px 16px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .video-section {
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .breakout-section {
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <a href="index.html">
+                <img src="images/logo.png" alt="[Brand Name]" class="logo">
+            </a>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="headline"><span class="highlight">Thank You</span> For Applying!</h1>
+            <p class="subheadline">[Watch the video below for your next steps]</p>
+        </section>
+
+        <!-- Thank You Video Section -->
+        <section class="video-section">
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="play-button"></div>
+                    <span class="label">Thank You Video</span>
+                </div>
+                <!-- Replace placeholder above with: <wistia-player media-id="YOUR_VIDEO_ID" aspect="1.7777"></wistia-player> -->
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Breakout Videos Section -->
+        <section class="breakout-section">
+            <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+
+            <div class="breakouts-grid">
+                <!-- Breakout 1 -->
+                <div class="breakout-item">
+                    <h3 class="breakout-title">[Question 1 - e.g., How Much Do I Need To Start?]</h3>
+                    <div class="breakout-video">
+                        <div class="play-button"></div>
+                    </div>
+                </div>
+
+                <!-- Breakout 2 -->
+                <div class="breakout-item">
+                    <h3 class="breakout-title">[Question 2 - e.g., How Quickly Will I See Results?]</h3>
+                    <div class="breakout-video">
+                        <div class="play-button"></div>
+                    </div>
+                </div>
+
+                <!-- Breakout 3 -->
+                <div class="breakout-item">
+                    <h3 class="breakout-title">[Question 3 - e.g., Do I Need Experience?]</h3>
+                    <div class="breakout-video">
+                        <div class="play-button"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Box -->
+        <section class="info-box">
+            <h3>What Happens Next?</h3>
+            <p>[Explain the next steps after they submit their application - e.g., "We'll review your application and reach out within 24-48 hours to schedule your strategy call."]</p>
+        </section>
+    </div>
+</body>
+</html>

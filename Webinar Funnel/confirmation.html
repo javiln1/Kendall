@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Registered! - [Brand Name]</title>
+    <meta name="description" content="Your spot is confirmed. Here's what to do next.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #F5F5DC;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
+            max-width: 180px;
+            height: auto;
+        }
+
+        /* Success Hero */
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .headline {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .headline .highlight {
+            color: #45AE04;
+        }
+
+        .subheadline {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #F5F5DC;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Webinar Details Box */
+        .details-box {
+            background-color: rgba(69, 174, 4, 0.1);
+            border: 2px solid rgba(69, 174, 4, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .details-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-icon {
+            font-size: 1.3rem;
+        }
+
+        .detail-label {
+            color: #F5F5DC;
+            opacity: 0.7;
+        }
+
+        .detail-value {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        /* Calendar Buttons */
+        .calendar-section {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .calendar-title {
+            font-size: 1.1rem;
+            color: #F5F5DC;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .calendar-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.8rem 1.5rem;
+            background-color: #111111;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid rgba(69, 174, 4, 0.3);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-btn:hover {
+            background-color: #1a1a1a;
+            border-color: #45AE04;
+        }
+
+        /* Next Steps */
+        .next-steps {
+            background-color: #111111;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .next-steps-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .steps-list {
+            list-style: none;
+        }
+
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .steps-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: #45AE04;
+            color: #FFFFFF;
+            font-weight: 700;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: #FFFFFF;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-content p {
+            color: #F5F5DC;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* Divider */
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #45AE04, transparent);
+            margin: 2rem auto;
+        }
+
+        /* Bonus Section (Optional) */
+        .bonus-section {
+            background: linear-gradient(135deg, rgba(69, 174, 4, 0.15), rgba(69, 174, 4, 0.05));
+            border: 1px solid rgba(69, 174, 4, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .bonus-badge {
+            display: inline-block;
+            background-color: #45AE04;
+            color: #FFFFFF;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bonus-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .bonus-description {
+            color: #F5F5DC;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* Share Section */
+        .share-section {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .share-title {
+            font-size: 1rem;
+            color: #F5F5DC;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: #111111;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: #FFFFFF;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background-color: #45AE04;
+            border-color: #45AE04;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 1rem 0;
+            }
+
+            .details-box {
+                padding: 1.5rem;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .next-steps {
+                padding: 1.5rem;
+            }
+
+            .calendar-buttons {
+                flex-direction: column;
+            }
+
+            .calendar-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo {
+                max-width: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .headline {
+                font-size: 1.5rem;
+            }
+
+            .logo {
+                max-width: 100px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .details-box {
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .success-icon {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <a href="registration.html">
+                <img src="images/logo.png" alt="[Brand Name]" class="logo">
+            </a>
+        </header>
+
+        <!-- Success Hero -->
+        <section class="hero">
+            <div class="success-icon">🎉</div>
+            <h1 class="headline"><span class="highlight">You're In!</span> Your Spot is Confirmed</h1>
+            <p class="subheadline">Check your email for confirmation details. Here's what you need to know:</p>
+        </section>
+
+        <!-- Webinar Details -->
+        <section class="details-box">
+            <h2 class="details-title">Your Webinar Details</h2>
+            <div class="detail-item">
+                <span class="detail-icon">📅</span>
+                <span class="detail-label">Date:</span>
+                <span class="detail-value">[Webinar Date - e.g., "Tuesday, January 14th, 2025"]</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-icon">🕐</span>
+                <span class="detail-label">Time:</span>
+                <span class="detail-value">[Webinar Time - e.g., "2:00 PM EST"]</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-icon">📍</span>
+                <span class="detail-label">Where:</span>
+                <span class="detail-value">Online (link will be sent via email)</span>
+            </div>
+        </section>
+
+        <!-- Add to Calendar -->
+        <section class="calendar-section">
+            <p class="calendar-title">Add to your calendar so you don't miss it:</p>
+            <div class="calendar-buttons">
+                <a href="#" class="calendar-btn">📅 Google Calendar</a>
+                <a href="#" class="calendar-btn">📅 Apple Calendar</a>
+                <a href="#" class="calendar-btn">📅 Outlook</a>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Next Steps -->
+        <section class="next-steps">
+            <h2 class="next-steps-title">What To Do Next</h2>
+            <ul class="steps-list">
+                <li>
+                    <span class="step-number">1</span>
+                    <div class="step-content">
+                        <h4>Check Your Email</h4>
+                        <p>Look for a confirmation email with your unique webinar link. Check spam if you don't see it.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="step-number">2</span>
+                    <div class="step-content">
+                        <h4>Mark Your Calendar</h4>
+                        <p>Block off the time and set a reminder 15 minutes before we go live.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="step-number">3</span>
+                    <div class="step-content">
+                        <h4>Show Up Ready</h4>
+                        <p>Grab a pen and paper—you'll want to take notes on the strategies we'll cover.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Bonus Section (Optional) -->
+        <section class="bonus-section">
+            <span class="bonus-badge">Exclusive Bonus</span>
+            <h3 class="bonus-title">[Bonus Title - e.g., "Free Resource Guide"]</h3>
+            <p class="bonus-description">[Bonus description - e.g., "Attendees who stay until the end will receive our exclusive PDF guide worth $297—completely free."]</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Share Section -->
+        <section class="share-section">
+            <p class="share-title">Know someone who'd benefit? Share this webinar:</p>
+            <div class="share-buttons">
+                <a href="#" class="share-btn" title="Share on Facebook">f</a>
+                <a href="#" class="share-btn" title="Share on Twitter">𝕏</a>
+                <a href="#" class="share-btn" title="Share on LinkedIn">in</a>
+                <a href="#" class="share-btn" title="Share via Email">✉</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
