@@ -52,10 +52,6 @@
             letter-spacing: -0.02em;
         }
 
-        /* Fix Calendly iframe background */
-        .calendly-inline-widget iframe {
-            color-scheme: light;
-        }
 
         @media (max-width: 768px) {
             .container {
@@ -106,11 +102,11 @@
         <section class="hero">
             <h1 class="headline">Book Your Call Below</h1>
         </section>
-
-        <!-- Calendly inline widget - UPDATE URL -->
-        <div class="calendly-inline-widget" data-url="[CALENDLY_URL]?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0171e3&background_color=000000&text_color=ffffff" style="min-width:320px;height:1000px;" data-resize="true"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        <!-- Calendly inline widget end -->
     </div>
+
+    <!-- Calendly inline widget -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/d/ctf8-v8g-5td/7-figure-shop-strategy-session?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0171e3&background_color=ffffff" style="min-width:320px;height:1000px;" data-resize="true"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- Calendly inline widget end -->
 </body>
 </html>
