@@ -288,6 +288,51 @@
             letter-spacing: 0.1em;
         }
 
+        /* Notice Section */
+        .notice-section {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .notice-box {
+            background-color: rgba(1, 113, 227, 0.1);
+            border: 1px solid rgba(1, 113, 227, 0.3);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .notice-text {
+            font-size: 0.95rem;
+            color: #F5F5DC;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .notice-text strong {
+            color: #0171E3;
+        }
+
+        /* Text Notification Section */
+        .text-notification {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .text-label {
+            font-size: 1rem;
+            color: #F5F5DC;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .phone-number {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 600;
+            color: #FFFFFF;
+            letter-spacing: 0.02em;
+        }
+
         /* Divider */
         .divider {
             width: 80px;
@@ -442,6 +487,13 @@
             <p class="subheadline">[Watch the video below for your next steps]</p>
         </section>
 
+        <!-- Important Notice -->
+        <section class="notice-section">
+            <div class="notice-box">
+                <p class="notice-text"><strong>Important:</strong> Check your email and confirm your call. Unconfirmed calls will not be taken. We value your time and ours — please be in a quiet place where we can speak about your goals.</p>
+            </div>
+        </section>
+
         <!-- Thank You Video Section -->
         <section class="video-section">
             <div class="video-wrapper">
@@ -451,6 +503,12 @@
                 </div>
                 <!-- Replace placeholder above with: <wistia-player media-id="YOUR_VIDEO_ID" aspect="1.7777"></wistia-player> -->
             </div>
+        </section>
+
+        <!-- Text Notification -->
+        <section class="text-notification">
+            <p class="text-label">You'll receive a text from</p>
+            <p class="phone-number">[Your Phone Number]</p>
         </section>
 
         <div class="divider"></div>
