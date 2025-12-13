@@ -122,6 +122,145 @@
             background-color: #0a0a0a;
         }
 
+        /* Video Testimonials Grid */
+        .video-testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .video-testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: 700px;
+                margin: 0 auto 3rem;
+            }
+        }
+
+        .video-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-card .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .video-card .play-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-card .play-btn::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 18px solid #000;
+            border-top: 11px solid transparent;
+            border-bottom: 11px solid transparent;
+            margin-left: 4px;
+        }
+
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .video-modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        .video-modal-close::before,
+        .video-modal-close::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: #fff;
+        }
+
+        .video-modal-close::before {
+            transform: rotate(45deg);
+        }
+
+        .video-modal-close::after {
+            transform: rotate(-45deg);
+        }
+
         /* Divider */
         .divider {
             width: 80px;
@@ -299,6 +438,35 @@
         <section class="testimonials-section">
             <h2 class="section-title">What Our <span>Students</span> Are Saying</h2>
 
+            <!-- Video Testimonials -->
+            <div class="video-testimonials-grid">
+                <div class="video-card" data-video="hfQajZ0dM4E">
+                    <img src="https://img.youtube.com/vi/hfQajZ0dM4E/maxresdefault.jpg" alt="Student Testimonial">
+                    <div class="play-overlay">
+                        <div class="play-btn"></div>
+                    </div>
+                </div>
+                <div class="video-card" data-video="KfzxgKt9CZg">
+                    <img src="https://img.youtube.com/vi/KfzxgKt9CZg/maxresdefault.jpg" alt="Student Testimonial">
+                    <div class="play-overlay">
+                        <div class="play-btn"></div>
+                    </div>
+                </div>
+                <div class="video-card" data-video="-5I4VDimulw">
+                    <img src="https://img.youtube.com/vi/-5I4VDimulw/maxresdefault.jpg" alt="Student Testimonial">
+                    <div class="play-overlay">
+                        <div class="play-btn"></div>
+                    </div>
+                </div>
+                <div class="video-card" data-video="XDstBj7agNw">
+                    <img src="https://img.youtube.com/vi/XDstBj7agNw/maxresdefault.jpg" alt="Student Testimonial">
+                    <div class="play-overlay">
+                        <div class="play-btn"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screenshot Testimonials -->
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <img src="images/testimonials/testimonial-1.png" alt="Student Result" class="testimonial-img" loading="lazy">
@@ -339,6 +507,48 @@
             <a href="#" class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Back to Application</a>
         </section>
     </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <button class="video-modal-close" id="closeModal"></button>
+        <div class="video-modal-content">
+            <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Video Modal Functionality
+        (function() {
+            const modal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            const closeBtn = document.getElementById('closeModal');
+            const videoCards = document.querySelectorAll('.video-card');
+
+            videoCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const videoId = card.getAttribute('data-video');
+                    videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            function closeModal() {
+                modal.classList.remove('active');
+                videoFrame.src = '';
+                document.body.style.overflow = '';
+            }
+        })();
+    </script>
 
     <script>
         // UTM Parameter Tracking
