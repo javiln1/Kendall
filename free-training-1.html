@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Shop Free Training - 7 Figure Shops</title>
+    <meta name="description" content="Free training reveals how you can take advantage of the 2026 TikTok Shop Goldrush.">
+
+    <!-- Wistia Player -->
+    <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/tdpmxgvxhe.js" async type="module"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000000;
+            color: #F5F5DC;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header/Logo */
+        .header {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            max-width: 220px;
+            height: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 1rem 0 1.5rem;
+        }
+
+        .headline {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .subheadline {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #F5F5DC;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Video Section */
+        .video-section {
+            margin: 0 0 2rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Wistia player styling */
+        wistia-player[media-id='tdpmxgvxhe']:not(:defined) {
+            background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/tdpmxgvxhe/swatch');
+            display: block;
+            filter: blur(5px);
+            padding-top: 56.25%;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                padding-bottom: env(safe-area-inset-bottom, 1rem);
+            }
+
+            .header {
+                padding: 1rem 0;
+            }
+
+            .hero {
+                padding: 0.5rem 0 1rem;
+            }
+
+            .video-wrapper {
+                border-radius: 8px;
+            }
+
+            .video-section {
+                margin: 0 0 1.5rem;
+            }
+
+            .logo {
+                max-width: 150px;
+            }
+        }
+
+        /* Extra small phones */
+        @media (max-width: 480px) {
+            .headline {
+                font-size: 1.5rem;
+            }
+
+            .subheadline {
+                font-size: 0.95rem;
+            }
+
+            .logo {
+                max-width: 130px;
+            }
+        }
+
+        /* Subtle animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .video-section {
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <img src="images/logo.png" alt="7 Figure Shops" class="logo">
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="headline">TikTok Shop Free Training</h1>
+            <p class="subheadline">How you can take advantage of the 2026 TikTok Shop Goldrush</p>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="video-wrapper">
+                <wistia-player media-id="tdpmxgvxhe" aspect="1.7777777777777777"></wistia-player>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // UTM Parameter Tracking
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            const utmData = {};
+
+            utmParams.forEach(param => {
+                if (params.get(param)) {
+                    utmData[param] = params.get(param);
+                }
+            });
+
+            // Store in sessionStorage
+            if (Object.keys(utmData).length > 0) {
+                sessionStorage.setItem('utmData', JSON.stringify(utmData));
+            }
+
+            // Append UTMs to all internal links
+            const storedUtm = sessionStorage.getItem('utmData');
+            if (storedUtm) {
+                const utm = JSON.parse(storedUtm);
+                const utmString = Object.entries(utm).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+
+                document.querySelectorAll('a[href$=".html"]').forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.setAttribute('href', href + (href.includes('?') ? '&' : '?') + utmString);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
