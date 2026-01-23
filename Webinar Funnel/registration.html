@@ -2,209 +2,464 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register for the Free Webinar - [Brand Name]</title>
-    <meta name="description" content="[Meta description here]">
-
-    <!-- Google Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Free Live Training - 7 Figure Shops</title>
+    <meta name="description" content="Free training reveals how my students and I are scaling stores from $0 to $30K/month in 90 days using the 7 Figure Shops Method.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-card: #0a0a0a;
+            --bg-elevated: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: #F5F5DC;
+            --text-muted: rgba(245, 245, 220, 0.6);
+            --accent-blue: #0171E3;
+            --accent-blue-glow: rgba(1, 113, 227, 0.4);
+            --accent-green: #22c55e;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-accent: rgba(1, 113, 227, 0.3);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 980px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            color: #F5F5DC;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-secondary);
             line-height: 1.6;
             min-height: 100vh;
+            min-height: -webkit-fill-available;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        /* Subtle background texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(1, 113, 227, 0.08), transparent),
+                radial-gradient(ellipse 60% 40% at 50% 100%, rgba(1, 113, 227, 0.05), transparent);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
         }
 
         /* Header */
         .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 2rem 0;
+            padding: 2rem 0 2.5rem;
+            gap: 1rem;
         }
 
         .logo {
-            max-width: 180px;
+            max-width: 200px;
             height: auto;
+            display: block;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(1, 113, 227, 0.15), rgba(1, 113, 227, 0.05));
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.6rem 1.25rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-accent);
+            letter-spacing: 0.02em;
+        }
+
+        .badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .social-proof-bar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .social-proof-bar .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            animation: livePulse 2s ease-in-out infinite;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        .social-proof-bar strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.15); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         /* Hero Section */
         .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            padding: 2rem 0;
+            padding: 1.5rem 0 2.5rem;
         }
 
         .eyebrow {
-            font-size: 1rem;
+            display: inline-block;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: #45AE04;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.03em;
         }
 
         .headline {
-            font-family: 'Merriweather', serif;
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-size: clamp(1.85rem, 5vw, 2.75rem);
             font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 1rem;
-            line-height: 1.3;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            max-width: 680px;
         }
 
         .subheadline {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: #F5F5DC;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 2rem;
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
         }
 
-        /* Benefits Section */
-        .benefits {
-            background-color: rgba(69, 174, 4, 0.1);
-            border: 1px solid rgba(69, 174, 4, 0.3);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+        .subheadline strong {
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
-        .benefits-title {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            color: #FFFFFF;
-            margin-bottom: 1.5rem;
+        /* Countdown Section */
+        .countdown-section {
+            padding: 1.5rem 0 2rem;
+        }
+
+        .countdown-label {
             text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
         }
 
-        .benefits-list {
-            list-style: none;
-            display: grid;
-            gap: 1rem;
-        }
-
-        .benefits-list li {
+        .countdown {
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 1rem;
-            color: #F5F5DC;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .benefits-list li::before {
-            content: "✓";
-            color: #45AE04;
+        .countdown-box {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-accent);
+            border-radius: var(--radius-md);
+            padding: 1rem 0;
+            min-width: 72px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            opacity: 0.5;
+        }
+
+        .countdown-number {
+            font-size: 1.75rem;
             font-weight: 700;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            color: var(--text-primary);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .countdown-unit {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.4rem;
+            font-weight: 500;
         }
 
         /* Form Section */
         .form-section {
-            background-color: #111111;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 3rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
         }
 
         .form-title {
-            font-family: 'Merriweather', serif;
-            font-size: 1.5rem;
-            color: #FFFFFF;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
+            letter-spacing: -0.01em;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.9rem;
-            color: #F5F5DC;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
 
         .form-group input {
             width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(69, 174, 4, 0.3);
-            border-radius: 8px;
-            background-color: #1a1a1a;
-            color: #FFFFFF;
+            padding: 0.95rem 1.1rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            background-color: var(--bg-elevated);
+            color: var(--text-primary);
             font-size: 1rem;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #45AE04;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px var(--accent-blue-glow);
         }
 
         .form-group input::placeholder {
-            color: #666;
+            color: rgba(245, 245, 220, 0.35);
         }
 
         .submit-btn {
             width: 100%;
             padding: 1rem 2rem;
-            background-color: #45AE04;
-            color: #FFFFFF;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--accent-blue), #0151a3);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1.05rem;
             font-weight: 600;
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-full);
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 0.75rem;
+            letter-spacing: 0.01em;
         }
 
         .submit-btn:hover {
-            background-color: #3a9203;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px var(--accent-blue-glow);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Better touch feedback */
+        @media (hover: none) {
+            .submit-btn:active,
+            .cta-button:active {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
         }
 
         .form-note {
             text-align: center;
-            font-size: 0.85rem;
-            color: #F5F5DC;
-            opacity: 0.6;
-            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1.25rem;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .trust-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* Divider */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            margin: 2.5rem auto;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: clamp(1.35rem, 3vw, 1.6rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span {
+            color: var(--accent-blue);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 1rem 0;
+        }
+
+        .benefits-list {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 1.1rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .benefits-list li::before {
+            content: '';
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            background: linear-gradient(135deg, rgba(1, 113, 227, 0.2), rgba(1, 113, 227, 0.1));
+            border: 1px solid var(--border-accent);
+            border-radius: 50%;
+            margin-top: 2px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230171E3' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-size: 12px;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Host Section */
         .host-section {
             text-align: center;
-            padding: 2rem 0;
-        }
-
-        .host-title {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            color: #FFFFFF;
-            margin-bottom: 1.5rem;
-        }
-
-        .host-title span {
-            color: #45AE04;
+            padding: 1rem 0;
         }
 
         .host-card {
@@ -212,212 +467,654 @@
             flex-direction: column;
             align-items: center;
             gap: 1rem;
-            background-color: #111111;
-            border-radius: 12px;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
             padding: 2rem;
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
+            border: 1px solid var(--border-subtle);
         }
 
         .host-image {
-            width: 120px;
-            height: 120px;
+            width: 88px;
+            height: 88px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #45AE04;
+            border: 2px solid var(--accent-blue);
+            background-color: var(--bg-elevated);
+            box-shadow: 0 0 0 4px var(--bg-card), 0 0 24px var(--accent-blue-glow);
         }
 
         .host-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #FFFFFF;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
         }
 
         .host-bio {
-            font-size: 0.95rem;
-            color: #F5F5DC;
-            opacity: 0.8;
+            font-size: 0.9rem;
+            color: var(--text-muted);
             text-align: center;
+            line-height: 1.65;
         }
 
-        /* Testimonials */
+        .host-credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 0.75rem;
+        }
+
+        .credential {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: var(--bg-elevated);
+            padding: 0.4rem 0.8rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .credential svg {
+            width: 14px;
+            height: 14px;
+            color: var(--accent-blue);
+        }
+
+        /* Testimonials Section */
         .testimonials-section {
-            padding: 3rem 0;
-        }
-
-        .section-title {
-            font-family: 'Merriweather', serif;
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            font-weight: 700;
-            color: #FFFFFF;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .section-title span {
-            color: #45AE04;
+            padding: 1rem 0;
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            grid-template-columns: 1fr;
+            gap: 14px;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 600px) {
             .testimonials-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
         .testimonial-card {
-            background: #111111;
-            border-radius: 10px;
-            padding: 8px;
-            border: 1px solid rgba(69, 174, 4, 0.1);
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
         }
 
-        .testimonial-img {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
+        .testimonial-quote {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex: 1;
         }
 
-        /* Divider */
-        .divider {
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #45AE04, transparent);
-            margin: 2rem auto;
+        .testimonial-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-subtle);
         }
 
-        /* Mobile Styles */
+        .testimonial-meta-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), #0151a3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .testimonial-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .testimonial-author {
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .testimonial-result {
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            font-weight: 500;
+            margin-top: 1px;
+        }
+
+        /* Urgency Section */
+        .urgency-section {
+            text-align: center;
+            padding: 2rem 0 1rem;
+        }
+
+        .urgency-title {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .urgency-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 520px;
+            margin: 0 auto 1.75rem;
+            line-height: 1.65;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-blue), #0151a3);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            letter-spacing: 0.01em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px var(--accent-blue-glow);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 2.5rem;
+        }
+
+        .disclaimer {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin: 0 auto 1rem;
+            line-height: 1.7;
+            opacity: 0.7;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        /* Tablet Styles */
         @media (max-width: 768px) {
             .container {
-                padding: 1rem;
+                padding: 1.5rem 1.25rem;
             }
 
-            .header {
-                padding: 1rem 0;
-            }
-
-            .hero {
-                padding: 1rem 0;
-            }
-
-            .benefits {
-                padding: 1.5rem;
-            }
-
-            .form-section {
-                padding: 1.5rem;
+            .stats-row {
+                gap: 1.5rem;
             }
 
             .host-card {
-                padding: 1.5rem;
-            }
-
-            .logo {
-                max-width: 120px;
+                max-width: 100%;
             }
         }
 
-        @media (max-width: 480px) {
-            .headline {
-                font-size: 1.5rem;
+        /* Mobile Styles */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem 1rem;
             }
 
-            .testimonials-grid {
-                grid-template-columns: 1fr;
+            .header {
+                padding: 1.25rem 0 1.5rem;
+                gap: 0.75rem;
             }
 
             .logo {
-                max-width: 100px;
+                max-width: 150px;
+            }
+
+            .badge {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.9rem;
+                gap: 6px;
+            }
+
+            .badge::before {
+                width: 6px;
+                height: 6px;
+            }
+
+            .social-proof-bar {
+                font-size: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 0.75rem 0 1.5rem;
+            }
+
+            .eyebrow {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+            }
+
+            .headline {
+                font-size: 1.5rem;
+                line-height: 1.25;
+                margin-bottom: 1rem;
+            }
+
+            .subheadline {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .countdown-section {
+                padding: 1rem 0 1.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .countdown {
+                gap: 8px;
+            }
+
+            .countdown-box {
+                min-width: 60px;
+                padding: 0.75rem 0;
+                border-radius: var(--radius-sm);
+            }
+
+            .countdown-number {
+                font-size: 1.35rem;
+            }
+
+            .countdown-unit {
+                font-size: 0.6rem;
+                margin-top: 0.3rem;
+            }
+
+            .form-section {
+                padding: 1.5rem 1.25rem;
+                border-radius: var(--radius-lg);
+                margin: 1rem 0;
+            }
+
+            .form-title {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-group label {
+                font-size: 0.8rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .form-group input {
+                padding: 0.9rem 1rem;
+                font-size: 16px; /* Prevents iOS zoom */
+                border-radius: var(--radius-sm);
+            }
+
+            .submit-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                margin-top: 0.5rem;
+            }
+
+            .form-note {
+                font-size: 0.75rem;
+                margin-top: 1rem;
+            }
+
+            .trust-section {
+                padding: 1.5rem 0;
+            }
+
+            .trust-label {
+                font-size: 0.65rem;
+                margin-bottom: 1rem;
+            }
+
+            .stats-row {
+                gap: 0.75rem;
+                justify-content: space-around;
+            }
+
+            .stat-item {
+                padding: 0 0.5rem;
+                flex: 1;
+                min-width: 80px;
+            }
+
+            .stat-number {
+                font-size: 1.35rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .divider {
+                margin: 1.75rem auto;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .benefits-list li {
+                font-size: 0.9rem;
+                gap: 12px;
+                margin-bottom: 0.9rem;
+            }
+
+            .benefits-list li::before {
+                width: 20px;
+                height: 20px;
+                min-width: 20px;
+                background-size: 10px;
+            }
+
+            .host-card {
+                padding: 1.25rem;
+                border-radius: var(--radius-lg);
+            }
+
+            .host-image {
+                width: 72px;
+                height: 72px;
+            }
+
+            .host-name {
+                font-size: 1.05rem;
+            }
+
+            .host-bio {
+                font-size: 0.85rem;
+            }
+
+            .host-credentials {
+                gap: 0.5rem;
+            }
+
+            .credential {
+                font-size: 0.7rem;
+                padding: 0.35rem 0.65rem;
+            }
+
+            .credential svg {
+                width: 12px;
+                height: 12px;
+            }
+
+            .testimonials-grid {
+                gap: 10px;
+            }
+
+            .testimonial-card {
+                padding: 1.15rem;
+                border-radius: var(--radius-md);
+            }
+
+            .testimonial-quote {
+                font-size: 0.85rem;
+            }
+
+            .testimonial-meta {
+                margin-top: 1rem;
+                padding-top: 0.85rem;
+            }
+
+            .testimonial-meta-avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 0.7rem;
+            }
+
+            .testimonial-author {
+                font-size: 0.8rem;
+            }
+
+            .testimonial-result {
+                font-size: 0.7rem;
+            }
+
+            .urgency-section {
+                padding: 1.5rem 0 0.5rem;
+            }
+
+            .urgency-title {
+                font-size: 1.15rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .urgency-text {
+                font-size: 0.9rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .cta-button {
+                display: block;
+                width: 100%;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .footer {
+                padding: 2rem 0 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .disclaimer {
+                font-size: 0.65rem;
+            }
+
+            .copyright {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Extra small mobile */
+        @media (max-width: 380px) {
+            .container {
+                padding: 0.75rem 0.75rem;
+            }
+
+            .headline {
+                font-size: 1.35rem;
+            }
+
+            .countdown-box {
+                min-width: 52px;
+            }
+
+            .countdown-number {
+                font-size: 1.2rem;
+            }
+
+            .form-section {
+                padding: 1.25rem 1rem;
+            }
+
+            .stat-item {
+                min-width: 70px;
+            }
+
+            .stat-number {
+                font-size: 1.2rem;
             }
         }
 
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .hero {
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .benefits {
-            animation: fadeIn 1s ease-out 0.2s both;
-        }
-
-        .form-section {
-            animation: fadeIn 1s ease-out 0.4s both;
-        }
+        .header { animation: fadeInUp 0.5s ease-out; }
+        .hero { animation: fadeInUp 0.5s ease-out 0.05s both; }
+        .countdown-section { animation: fadeInUp 0.5s ease-out 0.1s both; }
+        .form-section { animation: fadeInUp 0.5s ease-out 0.15s both; }
+        .trust-section { animation: fadeInUp 0.5s ease-out 0.2s both; }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <img src="images/logo.png" alt="[Brand Name]" class="logo">
+            <img src="../images/logo.png" alt="7 Figure Shops" class="logo">
+            <div class="badge">100% Free Live Training</div>
+            <div class="social-proof-bar">
+                <span class="dot"></span>
+                <span><strong>2,847</strong> entrepreneurs registered this week</span>
+            </div>
         </header>
 
         <!-- Hero Section -->
         <section class="hero">
-            <p class="eyebrow">Free Live Training</p>
-            <h1 class="headline">[Main Headline - e.g., "Ready to [Achieve X] Without [Pain Point]?"]</h1>
-            <p class="subheadline">[Subheadline - e.g., "Join this exclusive webinar and discover the exact system I used to [result]"]</p>
+            <p class="eyebrow">Free Training Tonight @ 8 PM EST</p>
+            <h1 class="headline">How My Students And I Are Scaling Stores From $0 To $30K/Month In 90 Days</h1>
+            <p class="subheadline">Discover the <strong>exact system</strong> we use to find winning products, create viral content, and build profitable TikTok Shop stores—without paid ads or prior experience.</p>
         </section>
 
-        <!-- Benefits Section -->
-        <section class="benefits">
-            <h2 class="benefits-title">In This Free Training, You'll Discover:</h2>
-            <ul class="benefits-list">
-                <li>[Benefit 1 - e.g., "The #1 mistake most people make when trying to [goal]"]</li>
-                <li>[Benefit 2 - e.g., "How to [achieve result] in [timeframe] without [common obstacle]"]</li>
-                <li>[Benefit 3 - e.g., "The exact framework I use to [result] every single time"]</li>
-                <li>[Benefit 4 - e.g., "Why [common belief] is actually holding you back"]</li>
-            </ul>
+        <!-- Countdown Timer -->
+        <section class="countdown-section">
+            <p class="countdown-label">Training Starts In</p>
+            <div class="countdown">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-unit">Days</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-unit">Hours</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-unit">Mins</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-unit">Secs</div>
+                </div>
+            </div>
         </section>
 
         <!-- Registration Form -->
         <section class="form-section">
-            <h2 class="form-title">Reserve Your Spot Now</h2>
-
-            <!-- OPTION 1: Simple HTML Form (replace action with your form handler) -->
-            <form action="confirmation.html" method="GET">
+            <h2 class="form-title">Reserve Your Free Seat Now</h2>
+            <form action="confirmation.html" method="GET" id="registrationForm">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <input type="email" id="email" name="email" placeholder="Enter your best email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number (for reminders)</label>
+                    <label for="phone">Phone Number <span style="opacity: 0.6; font-weight: 400;">(for SMS reminders)</span></label>
                     <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
                 </div>
-                <button type="submit" class="submit-btn">Register for Free</button>
+                <button type="submit" class="submit-btn">Save My Seat Now</button>
             </form>
+            <p class="form-note">Your information is 100% secure and will never be shared.</p>
+        </section>
 
-            <!-- OPTION 2: Typeform Embed (uncomment and replace ID)
-            <div data-tf-live="[TYPEFORM_ID]"></div>
-            <script src="https://embed.typeform.com/next/embed.js"></script>
-            -->
+        <!-- Trust Section -->
+        <section class="trust-section">
+            <p class="trust-label">Trusted by entrepreneurs worldwide</p>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Students Enrolled</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$10M+</div>
+                    <div class="stat-label">Student Revenue</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">90 Days</div>
+                    <div class="stat-label">Avg. Time to Profit</div>
+                </div>
+            </div>
+        </section>
 
-            <p class="form-note">We respect your privacy. Unsubscribe at any time.</p>
+        <div class="divider"></div>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">What You'll <span>Discover</span></h2>
+            <ul class="benefits-list">
+                <li>The TikTok Shop opportunity that's creating new millionaires in 2025—and why most people are missing it</li>
+                <li>The 3-step system to find winning products that practically sell themselves</li>
+                <li>Why TikTok Shop is the #1 platform for beginners (and what makes it different from Amazon/Shopify)</li>
+                <li>The exact blueprint we use to go from $0 to $5K-$10K/month in pure profit</li>
+                <li>Real proof from students who started with zero experience and are now making $10K-$50K/month</li>
+            </ul>
         </section>
 
         <div class="divider"></div>
 
         <!-- Host Section -->
         <section class="host-section">
-            <h2 class="host-title">Your <span>Host</span></h2>
+            <h2 class="section-title">Your <span>Host</span></h2>
             <div class="host-card">
-                <img src="images/host.png" alt="[Host Name]" class="host-image">
+                <img src="../images/host.png" alt="Your Host" class="host-image">
                 <h3 class="host-name">[Host Name]</h3>
-                <p class="host-bio">[Short bio - e.g., "John has helped over 500 students achieve [result]. He's been featured in [publications] and has [X years] of experience in [industry]."]</p>
+                <p class="host-bio">Founder of 7 Figure Shops and creator of the TikTok Shop system that has helped 2,500+ students build profitable online stores.</p>
+                <div class="host-credentials">
+                    <div class="credential">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        7-Figure Store Owner
+                    </div>
+                    <div class="credential">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        2,500+ Students
+                    </div>
+                    <div class="credential">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        $10M+ Revenue
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -425,16 +1122,128 @@
 
         <!-- Testimonials Section -->
         <section class="testimonials-section">
-            <h2 class="section-title">What Our <span>Students</span> Are Saying</h2>
+            <h2 class="section-title">Real <span>Results</span></h2>
             <div class="testimonials-grid">
-                <!-- ADD TESTIMONIAL IMAGES HERE -->
-                <!-- Example:
                 <div class="testimonial-card">
-                    <img src="images/testimonials/testimonial_01.png" alt="Student Result" class="testimonial-img" loading="lazy">
+                    <p class="testimonial-quote">"I went from zero to $12K in my first month. The product research method is insane—I found my first winner in 2 days."</p>
+                    <div class="testimonial-meta">
+                        <div class="testimonial-meta-avatar">SM</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-author">Sarah M.</p>
+                            <p class="testimonial-result">$12K in 30 days</p>
+                        </div>
+                    </div>
                 </div>
-                -->
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Started with just $500 and no experience. Now I'm consistently doing $8K/month while working my 9-5."</p>
+                    <div class="testimonial-meta">
+                        <div class="testimonial-meta-avatar">MT</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-author">Marcus T.</p>
+                            <p class="testimonial-result">$8K/month part-time</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The viral content formula changed everything. One video hit 2M views and I made $25K that month."</p>
+                    <div class="testimonial-meta">
+                        <div class="testimonial-meta-avatar">JR</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-author">Jessica R.</p>
+                            <p class="testimonial-result">$25K best month</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <div class="divider"></div>
+
+        <!-- Urgency Section -->
+        <section class="urgency-section">
+            <h2 class="urgency-title">This Is Powerful, But Only If You Act Fast</h2>
+            <p class="urgency-text">TikTok Shop is exploding right now, but the window of opportunity won't last forever. Early movers are making the most money. Register now before this training fills up.</p>
+            <a href="#" class="cta-button" onclick="document.getElementById('registrationForm').scrollIntoView({behavior: 'smooth'}); return false;">Save My Seat Now</a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="disclaimer">This site is not a part of the TikTok website or TikTok Inc. Additionally, this site is NOT endorsed by TikTok in any way. TIKTOK is a trademark of TIKTOK INC. Results vary. The testimonials shown are from real students but their results are not typical. Your results will vary based on effort, experience, and market conditions.</p>
+            <p class="copyright">&copy; 2025 7 Figure Shops. All rights reserved.</p>
+        </footer>
     </div>
+
+    <script>
+        // Countdown Timer
+        (function() {
+            function getNextWebinarDate() {
+                const now = new Date();
+                const target = new Date();
+                target.setHours(20, 0, 0, 0);
+                const estOffset = 5 * 60 * 60 * 1000;
+                const localOffset = now.getTimezoneOffset() * 60 * 1000;
+                target.setTime(target.getTime() + localOffset - estOffset);
+                if (now > target) {
+                    target.setDate(target.getDate() + 1);
+                }
+                return target;
+            }
+
+            const targetDate = getNextWebinarDate();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate.getTime() - now;
+
+                if (distance < 0) {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+
+        // UTM Parameter Tracking
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            const utmData = {};
+
+            utmParams.forEach(param => {
+                if (params.get(param)) {
+                    utmData[param] = params.get(param);
+                }
+            });
+
+            if (Object.keys(utmData).length > 0) {
+                sessionStorage.setItem('utmData', JSON.stringify(utmData));
+            }
+
+            const storedUtm = sessionStorage.getItem('utmData');
+            if (storedUtm) {
+                const utm = JSON.parse(storedUtm);
+                const utmString = Object.entries(utm).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+
+                const form = document.getElementById('registrationForm');
+                const currentAction = form.getAttribute('action');
+                form.setAttribute('action', currentAction + (currentAction.includes('?') ? '&' : '?') + utmString);
+            }
+        })();
+    </script>
 </body>
 </html>

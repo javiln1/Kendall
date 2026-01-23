@@ -2,371 +2,1175 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're Registered! - [Brand Name]</title>
-    <meta name="description" content="Your spot is confirmed. Here's what to do next.">
-
-    <!-- Google Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>You're Registered! - 7 Figure Shops</title>
+    <meta name="description" content="Your spot is confirmed for the free 7 Figure Shops training. Here's what to do next.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-card: #0a0a0a;
+            --bg-elevated: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: #F5F5DC;
+            --text-muted: rgba(245, 245, 220, 0.6);
+            --accent-blue: #0171E3;
+            --accent-blue-glow: rgba(1, 113, 227, 0.4);
+            --accent-green: #22c55e;
+            --accent-green-glow: rgba(34, 197, 94, 0.3);
+            --accent-yellow: #fbbf24;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-accent: rgba(1, 113, 227, 0.3);
+            --border-green: rgba(34, 197, 94, 0.3);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 980px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            color: #F5F5DC;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-secondary);
             line-height: 1.6;
             min-height: 100vh;
+            min-height: -webkit-fill-available;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(34, 197, 94, 0.06), transparent),
+                radial-gradient(ellipse 60% 40% at 50% 100%, rgba(1, 113, 227, 0.05), transparent);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
         }
 
         /* Header */
         .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 2rem 0;
+            padding: 2rem 0 1.5rem;
+            gap: 1rem;
         }
 
         .logo {
             max-width: 180px;
             height: auto;
+            display: block;
         }
 
-        /* Success Hero */
+        .confirmed-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05));
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.6rem 1.25rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-green);
+            letter-spacing: 0.02em;
+        }
+
+        .confirmed-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+        }
+
+        /* Hero Section */
         .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            padding: 2rem 0;
+            padding: 1.5rem 0 2rem;
         }
 
         .success-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05));
+            border: 2px solid var(--border-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 0 32px var(--accent-green-glow);
+        }
+
+        .success-icon::after {
+            content: "";
+            width: 28px;
+            height: 28px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322c55e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
         }
 
         .headline {
-            font-family: 'Merriweather', serif;
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
             font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 1rem;
-            line-height: 1.3;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
         }
 
         .headline .highlight {
-            color: #45AE04;
+            color: var(--accent-green);
         }
 
         .subheadline {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: #F5F5DC;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            color: var(--text-muted);
         }
 
-        /* Webinar Details Box */
-        .details-box {
-            background-color: rgba(69, 174, 4, 0.1);
-            border: 2px solid rgba(69, 174, 4, 0.4);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
+        /* Step Boxes */
+        .step-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 1.75rem;
+            margin: 1.5rem 0;
+            position: relative;
         }
 
-        .details-title {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            color: #FFFFFF;
-            margin-bottom: 1.5rem;
+        .step-box::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, var(--border-accent), transparent 90%);
+            opacity: 0.3;
         }
 
-        .detail-item {
+        .step-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .detail-icon {
-            font-size: 1.3rem;
-        }
-
-        .detail-label {
-            color: #F5F5DC;
-            opacity: 0.7;
-        }
-
-        .detail-value {
-            color: #FFFFFF;
-            font-weight: 600;
-        }
-
-        /* Calendar Buttons */
-        .calendar-section {
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .calendar-title {
-            font-size: 1.1rem;
-            color: #F5F5DC;
-            margin-bottom: 1rem;
-        }
-
-        .calendar-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .calendar-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0.8rem 1.5rem;
-            background-color: #111111;
-            color: #FFFFFF;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border: 1px solid rgba(69, 174, 4, 0.3);
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .calendar-btn:hover {
-            background-color: #1a1a1a;
-            border-color: #45AE04;
-        }
-
-        /* Next Steps */
-        .next-steps {
-            background-color: #111111;
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .next-steps-title {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            color: #FFFFFF;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .steps-list {
-            list-style: none;
-        }
-
-        .steps-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .steps-list li:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+            gap: 14px;
+            margin-bottom: 1.25rem;
+            position: relative;
         }
 
         .step-number {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: #45AE04;
-            color: #FFFFFF;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-blue), #0151a3);
+            color: var(--text-primary);
             font-weight: 700;
+            font-size: 0.85rem;
             border-radius: 50%;
             flex-shrink: 0;
+            box-shadow: 0 0 16px var(--accent-blue-glow);
         }
 
-        .step-content h4 {
-            color: #FFFFFF;
-            font-size: 1.05rem;
-            margin-bottom: 0.3rem;
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
         }
 
-        .step-content p {
-            color: #F5F5DC;
-            opacity: 0.8;
-            font-size: 0.95rem;
+        .step-content {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.65;
+            margin-left: 46px;
         }
 
-        /* Divider */
-        .divider {
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #45AE04, transparent);
-            margin: 2rem auto;
+        /* Video Placeholder */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: 1.25rem 0 0 0;
+            margin-left: 46px;
+            width: calc(100% - 46px);
+            border: 1px solid var(--border-subtle);
         }
 
-        /* Bonus Section (Optional) */
-        .bonus-section {
-            background: linear-gradient(135deg, rgba(69, 174, 4, 0.15), rgba(69, 174, 4, 0.05));
-            border: 1px solid rgba(69, 174, 4, 0.3);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            margin: 2rem 0;
+        .video-placeholder {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: linear-gradient(135deg, var(--bg-elevated), var(--bg-primary));
         }
 
-        .bonus-badge {
-            display: inline-block;
-            background-color: #45AE04;
-            color: #FFFFFF;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .bonus-title {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            color: #FFFFFF;
-            margin-bottom: 0.5rem;
-        }
-
-        .bonus-description {
-            color: #F5F5DC;
-            opacity: 0.8;
-            font-size: 0.95rem;
-        }
-
-        /* Share Section */
-        .share-section {
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .share-title {
-            font-size: 1rem;
-            color: #F5F5DC;
-            opacity: 0.7;
-            margin-bottom: 1rem;
-        }
-
-        .share-buttons {
+        .video-placeholder .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.2s ease, background 0.2s ease;
+            cursor: pointer;
         }
 
-        .share-btn {
+        .video-placeholder:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.05);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .video-placeholder .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 16px solid white;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            margin-left: 3px;
+        }
+
+        .video-placeholder .label {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+        }
+
+        /* Survey Section */
+        .survey-box {
+            background: linear-gradient(135deg, rgba(1, 113, 227, 0.06), rgba(1, 113, 227, 0.02));
+            border: 1px solid var(--border-accent);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin: 1.5rem 0 0 46px;
+            width: calc(100% - 46px);
+        }
+
+        .survey-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .survey-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .survey-question {
+            margin-bottom: 1rem;
+        }
+
+        .survey-question label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .survey-question select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            background-color: var(--bg-elevated);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+
+        .survey-question select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .survey-submit {
+            background: linear-gradient(135deg, var(--accent-blue), #0151a3);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.7rem 1.25rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .survey-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px var(--accent-blue-glow);
+        }
+
+        /* Ticket Card */
+        .ticket-card {
+            background: linear-gradient(135deg, rgba(1, 113, 227, 0.08), rgba(1, 113, 227, 0.02));
+            border: 1px solid var(--border-accent);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            margin: 1.25rem 0 0 46px;
+            width: calc(100% - 46px);
+        }
+
+        .ticket-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .ticket-row:last-child {
+            border-bottom: none;
+        }
+
+        .ticket-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .ticket-value {
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Calendar Buttons */
+        .calendar-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 1.25rem 0 0 46px;
+        }
+
+        .calendar-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
-            background-color: #111111;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: #FFFFFF;
-            font-size: 1.2rem;
+            gap: 8px;
+            padding: 0.75rem 1.1rem;
+            background: linear-gradient(135deg, rgba(1, 113, 227, 0.15), rgba(1, 113, 227, 0.08));
+            border: 1px solid var(--accent-blue);
+            border-radius: var(--radius-full);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
 
-        .share-btn:hover {
-            background-color: #45AE04;
-            border-color: #45AE04;
+        .calendar-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(1, 113, 227, 0.25), rgba(1, 113, 227, 0.15));
+            box-shadow: 0 4px 16px var(--accent-blue-glow);
+        }
+
+        .calendar-btn svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent-blue);
+        }
+
+        /* Countdown Mini */
+        .countdown-mini {
+            display: flex;
+            gap: 8px;
+            margin: 1.25rem 0 0 46px;
+        }
+
+        .countdown-mini-box {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-accent);
+            border-radius: var(--radius-sm);
+            padding: 0.6rem 0.75rem;
+            text-align: center;
+            min-width: 52px;
+        }
+
+        .countdown-mini-number {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .countdown-mini-unit {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        /* Copy Link */
+        .link-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 0.7rem 1rem;
+            margin: 1rem 0 0 46px;
+            width: calc(100% - 46px);
+        }
+
+        .link-text {
+            flex: 1;
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--accent-blue), #0151a3);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .copy-btn.copied {
+            background: var(--accent-green);
+        }
+
+        /* Better touch feedback */
+        @media (hover: none) {
+            .calendar-btn:active,
+            .cta-button:active,
+            .copy-btn:active,
+            .survey-submit:active,
+            .bonus-card:active,
+            .faq-question:active {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: block;
+            width: calc(100% - 46px);
+            margin-left: 46px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-blue), #0151a3);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.9rem 1.5rem;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 1.25rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px var(--accent-blue-glow);
+        }
+
+        /* Whitelist Box */
+        .whitelist-box {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0 0 46px;
+            width: calc(100% - 46px);
+        }
+
+        .whitelist-text {
+            font-size: 0.85rem;
+            color: var(--accent-yellow);
+            font-weight: 500;
+        }
+
+        /* Bonus Grid */
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 1.25rem 0 0 46px;
+            width: calc(100% - 46px);
+        }
+
+        @media (min-width: 500px) {
+            .bonus-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .bonus-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.9rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: border-color 0.2s ease;
+        }
+
+        .bonus-card:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .bonus-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 0, 0, 0.12);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .bonus-icon svg {
+            width: 16px;
+            height: 16px;
+            color: #ff4444;
+        }
+
+        .bonus-info h4 {
+            font-size: 0.8rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 1px;
+        }
+
+        .bonus-info p {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Testimonials */
+        .social-proof-section {
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        .social-proof-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .conf-testimonials {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        @media (min-width: 500px) {
+            .conf-testimonials {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .conf-testimonial {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            text-align: left;
+        }
+
+        .conf-testimonial-quote {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .conf-testimonial-author {
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 1.5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.6rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-question::after {
+            content: "+";
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            transition: transform 0.2s ease;
+            font-weight: 400;
+        }
+
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.25rem 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2.5rem 0 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 2rem;
+        }
+
+        .disclaimer {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            max-width: 520px;
+            margin: 0 auto 0.75rem;
+            line-height: 1.7;
+            opacity: 0.7;
+        }
+
+        .copyright {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1.25rem;
+            }
         }
 
         /* Mobile Styles */
-        @media (max-width: 768px) {
+        @media (max-width: 640px) {
             .container {
-                padding: 1rem;
+                padding: 1rem 1rem;
             }
 
             .header {
-                padding: 1rem 0;
+                padding: 1.25rem 0 1rem;
+                gap: 0.65rem;
             }
 
-            .details-box {
-                padding: 1.5rem;
+            .logo {
+                max-width: 140px;
             }
 
-            .detail-item {
+            .confirmed-badge {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.9rem;
+                gap: 6px;
+            }
+
+            .confirmed-badge::before {
+                width: 6px;
+                height: 6px;
+            }
+
+            .hero {
+                padding: 0.75rem 0 1.25rem;
+            }
+
+            .success-icon {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 1rem;
+            }
+
+            .success-icon::after {
+                width: 24px;
+                height: 24px;
+            }
+
+            .headline {
+                font-size: 1.4rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .subheadline {
+                font-size: 0.9rem;
+            }
+
+            .step-box {
+                padding: 1.25rem;
+                margin: 1rem 0;
+                border-radius: var(--radius-lg);
+            }
+
+            .step-box::before {
+                display: none;
+            }
+
+            .step-header {
+                gap: 12px;
+                margin-bottom: 1rem;
+            }
+
+            .step-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+
+            .step-title {
+                font-size: 1rem;
+            }
+
+            .step-content {
+                margin-left: 0;
+                font-size: 0.85rem;
+            }
+
+            .step-content[style*="margin-left: 46px"] {
+                margin-left: 0 !important;
+            }
+
+            .video-wrapper {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .video-placeholder .play-button {
+                width: 56px;
+                height: 56px;
+            }
+
+            .video-placeholder .play-button::after {
+                border-left-width: 14px;
+                border-top-width: 8px;
+                border-bottom-width: 8px;
+            }
+
+            .survey-box {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 1rem;
+                padding: 1.25rem;
+            }
+
+            .survey-title {
+                font-size: 0.9rem;
+            }
+
+            .survey-subtitle {
+                font-size: 0.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .survey-question label {
+                font-size: 0.8rem;
+            }
+
+            .survey-question select {
+                padding: 0.7rem 0.9rem;
+                font-size: 16px; /* Prevents iOS zoom */
+            }
+
+            .survey-submit {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .ticket-card {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 1rem;
+                padding: 1rem;
+            }
+
+            .ticket-row {
                 flex-direction: column;
-                gap: 4px;
+                align-items: flex-start;
+                gap: 2px;
+                padding: 0.5rem 0;
             }
 
-            .next-steps {
-                padding: 1.5rem;
+            .ticket-label {
+                font-size: 0.75rem;
+            }
+
+            .ticket-value {
+                font-size: 0.85rem;
             }
 
             .calendar-buttons {
+                margin-left: 0;
                 flex-direction: column;
+                gap: 10px;
+                margin-top: 1rem;
             }
 
             .calendar-btn {
-                width: 100%;
                 justify-content: center;
+                padding: 0.9rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .calendar-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .countdown-mini {
+                margin-left: 0;
+                margin-top: 1rem;
+                justify-content: flex-start;
+                gap: 6px;
+            }
+
+            .countdown-mini-box {
+                min-width: 48px;
+                padding: 0.5rem 0.6rem;
+            }
+
+            .countdown-mini-number {
+                font-size: 1.05rem;
+            }
+
+            .countdown-mini-unit {
+                font-size: 0.55rem;
+            }
+
+            .link-box {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0.9rem;
+            }
+
+            .link-text {
+                text-align: center;
+                font-size: 0.75rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .copy-btn {
+                width: 100%;
+                padding: 0.7rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .cta-button {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 1rem;
+                padding: 0.95rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .whitelist-box {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 1rem;
+                padding: 0.9rem 1rem;
+            }
+
+            .whitelist-text {
+                font-size: 0.8rem;
+            }
+
+            .bonus-grid {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 1rem;
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .bonus-card {
+                padding: 0.85rem;
+            }
+
+            .bonus-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .bonus-icon svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .bonus-info h4 {
+                font-size: 0.75rem;
+            }
+
+            .bonus-info p {
+                font-size: 0.65rem;
+            }
+
+            .social-proof-section {
+                padding: 1.25rem 0;
+            }
+
+            .social-proof-label {
+                font-size: 0.7rem;
+                margin-bottom: 0.85rem;
+            }
+
+            .conf-testimonials {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .conf-testimonial {
+                padding: 1rem;
+            }
+
+            .conf-testimonial-quote {
+                font-size: 0.8rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .conf-testimonial-author {
+                font-size: 0.75rem;
+            }
+
+            .faq-section {
+                padding: 1.25rem 0;
+            }
+
+            .section-title {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .faq-item {
+                margin-bottom: 0.5rem;
+            }
+
+            .faq-question {
+                padding: 0.9rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .faq-answer-content {
+                padding: 0 1rem 0.9rem;
+                font-size: 0.8rem;
+            }
+
+            .footer {
+                padding: 2rem 0 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .disclaimer {
+                font-size: 0.62rem;
+            }
+
+            .copyright {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* Extra small mobile */
+        @media (max-width: 380px) {
+            .container {
+                padding: 0.75rem 0.75rem;
             }
 
             .logo {
                 max-width: 120px;
             }
-        }
 
-        @media (max-width: 480px) {
             .headline {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
 
-            .logo {
-                max-width: 100px;
+            .step-box {
+                padding: 1rem;
+            }
+
+            .step-title {
+                font-size: 0.95rem;
+            }
+
+            .countdown-mini-box {
+                min-width: 44px;
+                padding: 0.45rem 0.5rem;
+            }
+
+            .countdown-mini-number {
+                font-size: 0.95rem;
+            }
+
+            .calendar-btn {
+                padding: 0.8rem 1rem;
+                font-size: 0.85rem;
             }
         }
 
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        .hero {
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .details-box {
-            animation: fadeIn 1s ease-out 0.2s both;
-        }
-
-        .success-icon {
-            animation: pulse 2s ease-in-out infinite;
-        }
+        .header { animation: fadeInUp 0.5s ease-out; }
+        .hero { animation: fadeInUp 0.5s ease-out 0.05s both; }
+        .success-icon { animation: scaleIn 0.5s ease-out 0.1s both; }
+        .step-box:nth-of-type(1) { animation: fadeInUp 0.5s ease-out 0.15s both; }
+        .step-box:nth-of-type(2) { animation: fadeInUp 0.5s ease-out 0.2s both; }
+        .step-box:nth-of-type(3) { animation: fadeInUp 0.5s ease-out 0.25s both; }
+        .step-box:nth-of-type(4) { animation: fadeInUp 0.5s ease-out 0.3s both; }
+        .step-box:nth-of-type(5) { animation: fadeInUp 0.5s ease-out 0.35s both; }
     </style>
 </head>
 <body>
@@ -374,96 +1178,380 @@
         <!-- Header -->
         <header class="header">
             <a href="registration.html">
-                <img src="images/logo.png" alt="[Brand Name]" class="logo">
+                <img src="../images/logo.png" alt="7 Figure Shops" class="logo">
             </a>
+            <div class="confirmed-badge">Spot Confirmed</div>
         </header>
 
         <!-- Success Hero -->
         <section class="hero">
-            <div class="success-icon">🎉</div>
-            <h1 class="headline"><span class="highlight">You're In!</span> Your Spot is Confirmed</h1>
-            <p class="subheadline">Check your email for confirmation details. Here's what you need to know:</p>
+            <div class="success-icon"></div>
+            <h1 class="headline"><span class="highlight">Congrats!</span> You're In</h1>
+            <p class="subheadline">Your spot is confirmed. Follow these steps to make sure you don't miss it.</p>
         </section>
 
-        <!-- Webinar Details -->
-        <section class="details-box">
-            <h2 class="details-title">Your Webinar Details</h2>
-            <div class="detail-item">
-                <span class="detail-icon">📅</span>
-                <span class="detail-label">Date:</span>
-                <span class="detail-value">[Webinar Date - e.g., "Tuesday, January 14th, 2025"]</span>
+        <!-- Step 1: Watch Video -->
+        <div class="step-box">
+            <div class="step-header">
+                <span class="step-number">1</span>
+                <h2 class="step-title">Watch This Important Video</h2>
             </div>
-            <div class="detail-item">
-                <span class="detail-icon">🕐</span>
-                <span class="detail-label">Time:</span>
-                <span class="detail-value">[Webinar Time - e.g., "2:00 PM EST"]</span>
+            <p class="step-content">Before the training, watch this short video to get the most out of our time together.</p>
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="play-button"></div>
+                    <span class="label">Welcome Video</span>
+                </div>
             </div>
-            <div class="detail-item">
-                <span class="detail-icon">📍</span>
-                <span class="detail-label">Where:</span>
-                <span class="detail-value">Online (link will be sent via email)</span>
-            </div>
-        </section>
 
-        <!-- Add to Calendar -->
-        <section class="calendar-section">
-            <p class="calendar-title">Add to your calendar so you don't miss it:</p>
+            <div class="survey-box">
+                <h3 class="survey-title">Quick Question (30 seconds)</h3>
+                <p class="survey-subtitle">Help us personalize the training for you:</p>
+                <form id="surveyForm">
+                    <div class="survey-question">
+                        <label for="challenge">What's your #1 challenge with starting an online store?</label>
+                        <select id="challenge" name="challenge">
+                            <option value="">Select one...</option>
+                            <option value="finding-products">Finding winning products</option>
+                            <option value="no-experience">I have no experience</option>
+                            <option value="no-capital">Limited starting capital</option>
+                            <option value="no-time">Not enough time</option>
+                            <option value="content-creation">Creating content/videos</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="survey-question">
+                        <label for="goal">What's your monthly income goal?</label>
+                        <select id="goal" name="goal">
+                            <option value="">Select one...</option>
+                            <option value="1-5k">$1,000 - $5,000/month</option>
+                            <option value="5-10k">$5,000 - $10,000/month</option>
+                            <option value="10-25k">$10,000 - $25,000/month</option>
+                            <option value="25k+">$25,000+/month</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="survey-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Step 2: Save Details -->
+        <div class="step-box">
+            <div class="step-header">
+                <span class="step-number">2</span>
+                <h2 class="step-title">Save These Details</h2>
+            </div>
+            <p class="step-content">Mark your calendar and save the meeting link so you're ready when we go live.</p>
+
+            <div class="ticket-card">
+                <div class="ticket-row">
+                    <span class="ticket-label">Event</span>
+                    <span class="ticket-value">7 Figure Shops Training</span>
+                </div>
+                <div class="ticket-row">
+                    <span class="ticket-label">Date</span>
+                    <span class="ticket-value" id="eventDate">Loading...</span>
+                </div>
+                <div class="ticket-row">
+                    <span class="ticket-label">Time</span>
+                    <span class="ticket-value">8:00 PM EST</span>
+                </div>
+                <div class="ticket-row">
+                    <span class="ticket-label">Duration</span>
+                    <span class="ticket-value">~60 minutes</span>
+                </div>
+            </div>
+
+            <p class="step-content" style="margin-top: 1.25rem; margin-left: 46px;">Add to your calendar:</p>
             <div class="calendar-buttons">
-                <a href="#" class="calendar-btn">📅 Google Calendar</a>
-                <a href="#" class="calendar-btn">📅 Apple Calendar</a>
-                <a href="#" class="calendar-btn">📅 Outlook</a>
+                <a href="#" class="calendar-btn" id="googleCalBtn" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Google Calendar
+                </a>
+                <a href="#" class="calendar-btn" id="appleCalBtn" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Apple Calendar
+                </a>
+                <a href="#" class="calendar-btn" id="outlookCalBtn" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Outlook
+                </a>
+            </div>
+
+            <p class="step-content" style="margin-top: 1.25rem; margin-left: 46px;">Training starts in:</p>
+            <div class="countdown-mini">
+                <div class="countdown-mini-box">
+                    <div class="countdown-mini-number" id="days">00</div>
+                    <div class="countdown-mini-unit">Days</div>
+                </div>
+                <div class="countdown-mini-box">
+                    <div class="countdown-mini-number" id="hours">00</div>
+                    <div class="countdown-mini-unit">Hours</div>
+                </div>
+                <div class="countdown-mini-box">
+                    <div class="countdown-mini-number" id="minutes">00</div>
+                    <div class="countdown-mini-unit">Mins</div>
+                </div>
+                <div class="countdown-mini-box">
+                    <div class="countdown-mini-number" id="seconds">00</div>
+                    <div class="countdown-mini-unit">Secs</div>
+                </div>
+            </div>
+
+            <p class="step-content" style="margin-top: 1.25rem; margin-left: 46px;">Meeting Link:</p>
+            <div class="link-box">
+                <span class="link-text" id="meetingLink">https://zoom.us/j/YOUR-MEETING-ID</span>
+                <button class="copy-btn" onclick="copyLink()">Copy Link</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Confirm Spot -->
+        <div class="step-box">
+            <div class="step-header">
+                <span class="step-number">3</span>
+                <h2 class="step-title">Confirm Your Spot</h2>
+            </div>
+            <p class="step-content">Check your inbox for our confirmation email. To make sure you receive reminders:</p>
+            <div class="whitelist-box">
+                <p class="whitelist-text">Reply "CONFIRM" to our email so it doesn't end up in spam. Add us to your contacts!</p>
+            </div>
+        </div>
+
+        <!-- Step 4: Join Community -->
+        <div class="step-box">
+            <div class="step-header">
+                <span class="step-number">4</span>
+                <h2 class="step-title">Join The Community</h2>
+            </div>
+            <p class="step-content">Connect with other ambitious entrepreneurs in our private Facebook group.</p>
+            <a href="#" class="cta-button" target="_blank">Join Facebook Group (2,500+ Members)</a>
+        </div>
+
+        <!-- Step 5: Watch Pre-Training Content -->
+        <div class="step-box">
+            <div class="step-header">
+                <span class="step-number">5</span>
+                <h2 class="step-title">Watch Before The Training</h2>
+            </div>
+            <p class="step-content">Get a head start with these short videos:</p>
+            <div class="bonus-grid">
+                <a href="#" class="bonus-card" target="_blank">
+                    <div class="bonus-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    </div>
+                    <div class="bonus-info">
+                        <h4>Why TikTok Shop Now</h4>
+                        <p>3 min watch</p>
+                    </div>
+                </a>
+                <a href="#" class="bonus-card" target="_blank">
+                    <div class="bonus-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    </div>
+                    <div class="bonus-info">
+                        <h4>Success Stories</h4>
+                        <p>5 min watch</p>
+                    </div>
+                </a>
+                <a href="#" class="bonus-card" target="_blank">
+                    <div class="bonus-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    </div>
+                    <div class="bonus-info">
+                        <h4>What To Expect</h4>
+                        <p>2 min watch</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Social Proof -->
+        <section class="social-proof-section">
+            <p class="social-proof-label">What students are saying</p>
+            <div class="conf-testimonials">
+                <div class="conf-testimonial">
+                    <p class="conf-testimonial-quote">"The training completely changed how I approach TikTok Shop. Made $5K in my first 30 days."</p>
+                    <p class="conf-testimonial-author">— David K.</p>
+                </div>
+                <div class="conf-testimonial">
+                    <p class="conf-testimonial-quote">"I was skeptical but the strategies shared are gold. Already seeing results after one tip."</p>
+                    <p class="conf-testimonial-author">— Amanda S.</p>
+                </div>
             </div>
         </section>
 
-        <div class="divider"></div>
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Common Questions</h2>
 
-        <!-- Next Steps -->
-        <section class="next-steps">
-            <h2 class="next-steps-title">What To Do Next</h2>
-            <ul class="steps-list">
-                <li>
-                    <span class="step-number">1</span>
-                    <div class="step-content">
-                        <h4>Check Your Email</h4>
-                        <p>Look for a confirmation email with your unique webinar link. Check spam if you don't see it.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="step-number">2</span>
-                    <div class="step-content">
-                        <h4>Mark Your Calendar</h4>
-                        <p>Block off the time and set a reminder 15 minutes before we go live.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="step-number">3</span>
-                    <div class="step-content">
-                        <h4>Show Up Ready</h4>
-                        <p>Grab a pen and paper—you'll want to take notes on the strategies we'll cover.</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
+            <div class="faq-item">
+                <button class="faq-question">What if I can't make it live?</button>
+                <div class="faq-answer">
+                    <p class="faq-answer-content">We highly recommend attending live so you can ask questions. However, a replay will be available for 24 hours after the training.</p>
+                </div>
+            </div>
 
-        <!-- Bonus Section (Optional) -->
-        <section class="bonus-section">
-            <span class="bonus-badge">Exclusive Bonus</span>
-            <h3 class="bonus-title">[Bonus Title - e.g., "Free Resource Guide"]</h3>
-            <p class="bonus-description">[Bonus description - e.g., "Attendees who stay until the end will receive our exclusive PDF guide worth $297—completely free."]</p>
-        </section>
+            <div class="faq-item">
+                <button class="faq-question">Do I need any prior experience?</button>
+                <div class="faq-answer">
+                    <p class="faq-answer-content">Not at all! This training is designed for complete beginners. We'll cover everything from scratch.</p>
+                </div>
+            </div>
 
-        <div class="divider"></div>
+            <div class="faq-item">
+                <button class="faq-question">Is this really free?</button>
+                <div class="faq-answer">
+                    <p class="faq-answer-content">Yes, 100% free. No credit card required. We'll share valuable strategies you can implement immediately.</p>
+                </div>
+            </div>
 
-        <!-- Share Section -->
-        <section class="share-section">
-            <p class="share-title">Know someone who'd benefit? Share this webinar:</p>
-            <div class="share-buttons">
-                <a href="#" class="share-btn" title="Share on Facebook">f</a>
-                <a href="#" class="share-btn" title="Share on Twitter">𝕏</a>
-                <a href="#" class="share-btn" title="Share on LinkedIn">in</a>
-                <a href="#" class="share-btn" title="Share via Email">✉</a>
+            <div class="faq-item">
+                <button class="faq-question">How much money do I need to start?</button>
+                <div class="faq-answer">
+                    <p class="faq-answer-content">Many students have started with $200-$500. We'll cover low-cost strategies that don't require big investment.</p>
+                </div>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="disclaimer">This site is not a part of the TikTok website or TikTok Inc. Additionally, this site is NOT endorsed by TikTok in any way. TIKTOK is a trademark of TIKTOK INC. Results vary. Your results will vary based on effort, experience, and market conditions.</p>
+            <p class="copyright">&copy; 2025 7 Figure Shops. All rights reserved.</p>
+        </footer>
     </div>
+
+    <script>
+        // Countdown Timer & Calendar Links
+        (function() {
+            function getNextWebinarDate() {
+                const now = new Date();
+                const target = new Date();
+                target.setHours(20, 0, 0, 0);
+                const estOffset = 5 * 60 * 60 * 1000;
+                const localOffset = now.getTimezoneOffset() * 60 * 1000;
+                target.setTime(target.getTime() + localOffset - estOffset);
+                if (now > target) {
+                    target.setDate(target.getDate() + 1);
+                }
+                return target;
+            }
+
+            const targetDate = getNextWebinarDate();
+
+            // Display event date
+            const options = { weekday: 'short', month: 'short', day: 'numeric' };
+            document.getElementById('eventDate').textContent = targetDate.toLocaleDateString('en-US', options);
+
+            // Generate calendar links
+            const eventTitle = '7 Figure Shops Live Training';
+            const eventDescription = 'Join us for the free 7 Figure Shops training. Learn how to scale from $0 to $30K/month with TikTok Shop.';
+            const eventLocation = 'Online - Zoom';
+            const startTime = targetDate.toISOString().replace(/-|:|\.\d\d\d/g, '');
+            const endDate = new Date(targetDate.getTime() + 60 * 60 * 1000);
+            const endTime = endDate.toISOString().replace(/-|:|\.\d\d\d/g, '');
+
+            // Google Calendar
+            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${startTime}/${endTime}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}`;
+            document.getElementById('googleCalBtn').href = googleUrl;
+
+            // Apple/iCal
+            const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${startTime}\nDTEND:${endTime}\nSUMMARY:${eventTitle}\nDESCRIPTION:${eventDescription}\nLOCATION:${eventLocation}\nEND:VEVENT\nEND:VCALENDAR`;
+            const icsBlob = new Blob([icsContent], { type: 'text/calendar' });
+            document.getElementById('appleCalBtn').href = URL.createObjectURL(icsBlob);
+            document.getElementById('appleCalBtn').download = '7-figure-shops-training.ics';
+
+            // Outlook
+            const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(eventTitle)}&startdt=${targetDate.toISOString()}&enddt=${endDate.toISOString()}&body=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}`;
+            document.getElementById('outlookCalBtn').href = outlookUrl;
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate.getTime() - now;
+
+                if (distance < 0) {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+
+        // Copy Link
+        function copyLink() {
+            const link = document.getElementById('meetingLink').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy Link';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+
+        // UTM Tracking
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            const utmData = {};
+            utmParams.forEach(param => {
+                if (params.get(param)) utmData[param] = params.get(param);
+            });
+            if (Object.keys(utmData).length > 0) sessionStorage.setItem('utmData', JSON.stringify(utmData));
+
+            const storedUtm = sessionStorage.getItem('utmData');
+            if (storedUtm) {
+                const utm = JSON.parse(storedUtm);
+                const utmString = Object.entries(utm).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+                document.querySelectorAll('a[href$=".html"]').forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.setAttribute('href', href + (href.includes('?') ? '&' : '?') + utmString);
+                });
+            }
+        })();
+
+        // Survey
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const challenge = document.getElementById('challenge').value;
+            const goal = document.getElementById('goal').value;
+            if (challenge && goal) {
+                sessionStorage.setItem('surveyData', JSON.stringify({ challenge, goal }));
+                const btn = this.querySelector('.survey-submit');
+                btn.textContent = 'Thanks!';
+                btn.style.background = 'var(--accent-green)';
+                btn.disabled = true;
+                setTimeout(() => {
+                    this.closest('.survey-box').style.opacity = '0.6';
+                }, 800);
+            }
+        });
+    </script>
 </body>
 </html>
