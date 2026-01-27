@@ -1233,16 +1233,72 @@
             if (Object.keys(utmData).length > 0) {
                 sessionStorage.setItem('utmData', JSON.stringify(utmData));
             }
+        })();
 
-            const storedUtm = sessionStorage.getItem('utmData');
-            if (storedUtm) {
-                const utm = JSON.parse(storedUtm);
-                const utmString = Object.entries(utm).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+        // Form Submission Handler
+        (function() {
+            const EDGE_FUNCTION_URL = 'https://xloveeduuwqagntcdxwf.supabase.co/functions/v1/webinar-registration';
+            const form = document.getElementById('registrationForm');
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
 
-                const form = document.getElementById('registrationForm');
-                const currentAction = form.getAttribute('action');
-                form.setAttribute('action', currentAction + (currentAction.includes('?') ? '&' : '?') + utmString);
-            }
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Get form data
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+
+                // Get UTM data from session storage
+                const storedUtm = sessionStorage.getItem('utmData');
+                const utm = storedUtm ? JSON.parse(storedUtm) : {};
+
+                // Disable button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Saving...';
+
+                try {
+                    // Submit to edge function
+                    const response = await fetch(EDGE_FUNCTION_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name,
+                            email,
+                            phone: phone || null,
+                            utm_source: utm.utm_source || null,
+                            utm_medium: utm.utm_medium || null,
+                            utm_campaign: utm.utm_campaign || null
+                        })
+                    });
+
+                    // Build redirect URL with form data for confirmation page
+                    const confirmParams = new URLSearchParams({
+                        name: name,
+                        email: email
+                    });
+                    if (phone) confirmParams.set('phone', phone);
+
+                    // Add UTM params to redirect URL
+                    Object.entries(utm).forEach(([key, value]) => {
+                        confirmParams.set(key, value);
+                    });
+
+                    // Redirect to confirmation page regardless of API result
+                    // (we don't want to block user experience if Close is slow)
+                    window.location.href = 'confirmation.html?' + confirmParams.toString();
+
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    // Still redirect on error - data saved to Supabase is the source of truth
+                    const confirmParams = new URLSearchParams({ name, email });
+                    if (phone) confirmParams.set('phone', phone);
+                    window.location.href = 'confirmation.html?' + confirmParams.toString();
+                }
+            });
         })();
     </script>
 </body>
