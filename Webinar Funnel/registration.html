@@ -1129,32 +1129,32 @@
                     <label for="phone">Phone Number <span style="opacity: 0.6; font-weight: 400;">(for SMS reminders)</span></label>
                     <div class="phone-input-wrapper">
                         <select id="countryCode" class="country-select">
-                            <option value="+1" data-country="US">🇺🇸 +1</option>
-                            <option value="+1" data-country="CA">🇨🇦 +1</option>
-                            <option value="+44">🇬🇧 +44</option>
-                            <option value="+61">🇦🇺 +61</option>
-                            <option value="+49">🇩🇪 +49</option>
-                            <option value="+33">🇫🇷 +33</option>
-                            <option value="+34">🇪🇸 +34</option>
-                            <option value="+39">🇮🇹 +39</option>
-                            <option value="+31">🇳🇱 +31</option>
-                            <option value="+52">🇲🇽 +52</option>
-                            <option value="+55">🇧🇷 +55</option>
-                            <option value="+57">🇨🇴 +57</option>
-                            <option value="+54">🇦🇷 +54</option>
-                            <option value="+91">🇮🇳 +91</option>
-                            <option value="+971">🇦🇪 +971</option>
-                            <option value="+966">🇸🇦 +966</option>
-                            <option value="+65">🇸🇬 +65</option>
-                            <option value="+81">🇯🇵 +81</option>
-                            <option value="+82">🇰🇷 +82</option>
-                            <option value="+86">🇨🇳 +86</option>
-                            <option value="+63">🇵🇭 +63</option>
-                            <option value="+234">🇳🇬 +234</option>
-                            <option value="+27">🇿🇦 +27</option>
-                            <option value="+254">🇰🇪 +254</option>
+                            <option value="+1" data-length="10" data-format="(XXX) XXX-XXXX">🇺🇸 +1</option>
+                            <option value="+1" data-length="10" data-format="(XXX) XXX-XXXX" data-country="CA">🇨🇦 +1</option>
+                            <option value="+44" data-length="10" data-format="XXXX XXXXXX">🇬🇧 +44</option>
+                            <option value="+61" data-length="9" data-format="XXX XXX XXX">🇦🇺 +61</option>
+                            <option value="+49" data-length="10,11" data-format="XXX XXXXXXX">🇩🇪 +49</option>
+                            <option value="+33" data-length="9" data-format="X XX XX XX XX">🇫🇷 +33</option>
+                            <option value="+34" data-length="9" data-format="XXX XXX XXX">🇪🇸 +34</option>
+                            <option value="+39" data-length="10" data-format="XXX XXX XXXX">🇮🇹 +39</option>
+                            <option value="+31" data-length="9" data-format="X XXXX XXXX">🇳🇱 +31</option>
+                            <option value="+52" data-length="10" data-format="XX XXXX XXXX">🇲🇽 +52</option>
+                            <option value="+55" data-length="11" data-format="XX XXXXX XXXX">🇧🇷 +55</option>
+                            <option value="+57" data-length="10" data-format="XXX XXX XXXX">🇨🇴 +57</option>
+                            <option value="+54" data-length="10" data-format="XX XXXX XXXX">🇦🇷 +54</option>
+                            <option value="+91" data-length="10" data-format="XXXXX XXXXX">🇮🇳 +91</option>
+                            <option value="+971" data-length="9" data-format="XX XXX XXXX">🇦🇪 +971</option>
+                            <option value="+966" data-length="9" data-format="XX XXX XXXX">🇸🇦 +966</option>
+                            <option value="+65" data-length="8" data-format="XXXX XXXX">🇸🇬 +65</option>
+                            <option value="+81" data-length="10" data-format="XX XXXX XXXX">🇯🇵 +81</option>
+                            <option value="+82" data-length="10" data-format="XX XXXX XXXX">🇰🇷 +82</option>
+                            <option value="+86" data-length="11" data-format="XXX XXXX XXXX">🇨🇳 +86</option>
+                            <option value="+63" data-length="10" data-format="XXX XXX XXXX">🇵🇭 +63</option>
+                            <option value="+234" data-length="10" data-format="XXX XXX XXXX">🇳🇬 +234</option>
+                            <option value="+27" data-length="9" data-format="XX XXX XXXX">🇿🇦 +27</option>
+                            <option value="+254" data-length="9" data-format="XXX XXXXXX">🇰🇪 +254</option>
                         </select>
-                        <input type="tel" id="phone" name="phone" placeholder="Phone number" pattern="[0-9]{6,14}" inputmode="numeric">
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" inputmode="numeric">
                     </div>
                     <p class="field-error" id="phoneError"></p>
                 </div>
@@ -1358,17 +1358,91 @@
                 return re.test(email);
             }
 
-            // Phone validation (digits only, 6-14 chars)
+            // Get expected phone length(s) for selected country
+            function getExpectedLength() {
+                const option = countrySelect.selectedOptions[0];
+                const lengthStr = option.dataset.length || '10';
+                return lengthStr.split(',').map(Number);
+            }
+
+            // Get phone format for selected country
+            function getPhoneFormat() {
+                const option = countrySelect.selectedOptions[0];
+                return option.dataset.format || 'XXXXXXXXXX';
+            }
+
+            // Phone validation based on country
             function validatePhone(phone) {
                 if (!phone) return true; // Phone is optional
                 const digitsOnly = phone.replace(/\D/g, '');
-                return digitsOnly.length >= 6 && digitsOnly.length <= 14;
+                const expectedLengths = getExpectedLength();
+                return expectedLengths.includes(digitsOnly.length);
             }
 
             // Format phone to digits only
             function formatPhone(phone) {
                 return phone.replace(/\D/g, '');
             }
+
+            // Auto-format phone number based on country format
+            function autoFormatPhone(value) {
+                const digits = value.replace(/\D/g, '');
+                const format = getPhoneFormat();
+                const expectedLengths = getExpectedLength();
+                const maxLength = Math.max(...expectedLengths);
+
+                // Limit digits to max expected length
+                const limitedDigits = digits.slice(0, maxLength);
+
+                // Apply format
+                let result = '';
+                let digitIndex = 0;
+
+                for (let i = 0; i < format.length && digitIndex < limitedDigits.length; i++) {
+                    if (format[i] === 'X') {
+                        result += limitedDigits[digitIndex];
+                        digitIndex++;
+                    } else {
+                        result += format[i];
+                        // Don't add separator if no more digits
+                        if (digitIndex >= limitedDigits.length) break;
+                    }
+                }
+
+                return result;
+            }
+
+            // Update placeholder when country changes
+            function updatePlaceholder() {
+                const format = getPhoneFormat();
+                // Replace X with example digits
+                const placeholder = format.replace(/X/g, () => Math.floor(Math.random() * 10));
+                phoneInput.placeholder = placeholder;
+            }
+
+            // Initialize placeholder
+            updatePlaceholder();
+
+            // Country change handler
+            countrySelect.addEventListener('change', function() {
+                updatePlaceholder();
+                // Re-format existing value if any
+                if (phoneInput.value) {
+                    phoneInput.value = autoFormatPhone(phoneInput.value);
+                    // Re-validate
+                    const digits = formatPhone(phoneInput.value);
+                    if (digits && !validatePhone(phoneInput.value)) {
+                        const lengths = getExpectedLength();
+                        phoneError.textContent = `Phone number should be ${lengths.join(' or ')} digits`;
+                        phoneInput.classList.add('invalid');
+                        phoneInput.classList.remove('valid');
+                    } else if (digits) {
+                        phoneError.textContent = '';
+                        phoneInput.classList.remove('invalid');
+                        phoneInput.classList.add('valid');
+                    }
+                }
+            });
 
             // Real-time email validation
             emailInput.addEventListener('blur', function() {
@@ -1387,19 +1461,29 @@
                 }
             });
 
-            // Real-time phone validation
+            // Real-time phone formatting and validation
             phoneInput.addEventListener('input', function() {
-                // Only allow digits, spaces, dashes, parentheses
-                this.value = this.value.replace(/[^\d\s\-()]/g, '');
+                const cursorPos = this.selectionStart;
+                const oldLength = this.value.length;
+
+                // Auto-format the input
+                this.value = autoFormatPhone(this.value);
+
+                // Adjust cursor position
+                const newLength = this.value.length;
+                const diff = newLength - oldLength;
+                this.setSelectionRange(cursorPos + diff, cursorPos + diff);
             });
 
             phoneInput.addEventListener('blur', function() {
                 const phone = this.value.trim();
-                if (phone && !validatePhone(phone)) {
-                    phoneError.textContent = 'Please enter a valid phone number (6-14 digits)';
+                const digits = formatPhone(phone);
+                if (digits && !validatePhone(phone)) {
+                    const lengths = getExpectedLength();
+                    phoneError.textContent = `Phone number should be ${lengths.join(' or ')} digits`;
                     this.classList.add('invalid');
                     this.classList.remove('valid');
-                } else if (phone) {
+                } else if (digits) {
                     phoneError.textContent = '';
                     this.classList.remove('invalid');
                     this.classList.add('valid');
@@ -1431,7 +1515,8 @@
                 }
 
                 if (phoneRaw && !validatePhone(phoneRaw)) {
-                    phoneError.textContent = 'Please enter a valid phone number (6-14 digits)';
+                    const lengths = getExpectedLength();
+                    phoneError.textContent = `Phone number should be ${lengths.join(' or ')} digits`;
                     phoneInput.classList.add('invalid');
                     hasErrors = true;
                 }
